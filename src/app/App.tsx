@@ -1,8 +1,31 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'motion/react';
+import { motion, useScroll, useTransform } from 'motion/react';
 import { Globe, Briefcase, Users, Zap, ArrowRight, Play, ArrowUpRight, Mail } from 'lucide-react';
 import introVideo from '../imports/intro-video.mp4';
-import v1Video from '../imports/v1.mov';
+import PremiumGallery from './components/PremiumGallery';
+
+const galleryImages = [
+  {
+    url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
+    title: "Global Exhibitions",
+    caption: "Experience world-class business networking environments."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+    title: "Premium Venues",
+    caption: "Immersive spaces designed to foster innovation and connection."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop",
+    title: "Industry Leaders",
+    caption: "Learn from the visionaries shaping the future of global enterprise."
+  },
+  {
+    url: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=2070&auto=format&fit=crop",
+    title: "Elite Matchmaking",
+    caption: "Curated encounters that accelerate your brand's international growth."
+  }
+];
 
 const services = [
   { icon: Globe, title: 'Global Network', desc: 'Connecting businesses across the world with unparalleled reach and precision.' },
@@ -22,29 +45,11 @@ export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Custom Smooth Cursor
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const springConfig = { damping: 40, stiffness: 400, mass: 0.5 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
-  const [isHovering, setIsHovering] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16);
-      cursorY.set(e.clientY - 16);
-    };
-    window.addEventListener('mousemove', moveCursor);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', moveCursor);
-    };
-  }, [cursorX, cursorY]);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Premium sequential loading times
   const tCurtain = 1.0;
@@ -62,7 +67,7 @@ export default function App() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FDFCF8] text-[#0A1931] overflow-hidden font-sans selection:bg-[#D4AF37] selection:text-white cursor-none">
+    <main className="min-h-screen bg-[#FDFCF8] text-[#0A1931] overflow-hidden font-sans selection:bg-[#D4AF37] selection:text-white">
 
       {/* --- CINEMATIC CURTAIN PRELOADER --- */}
       <motion.div
@@ -84,18 +89,6 @@ export default function App() {
           </div>
         </motion.div>
       </motion.div>
-
-      {/* --- CUSTOM CURSOR --- */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-[#D4AF37] pointer-events-none z-[100] mix-blend-difference"
-        style={{ x: cursorXSpring, y: cursorYSpring }}
-        animate={{ scale: isHovering ? 2.5 : 1, backgroundColor: isHovering ? 'rgba(212, 175, 55, 0.1)' : 'transparent' }}
-        transition={{ duration: 0.2 }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-[#D4AF37] rounded-full pointer-events-none z-[100]"
-        style={{ x: cursorX, y: cursorY, translateX: 12, translateY: 12 }}
-      />
 
       {/* --- LUXURY PASTEL / "CRAYON" MESH BACKGROUND --- */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#FDFCF8]">
@@ -133,14 +126,14 @@ export default function App() {
           }`}
       >
         <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-          <a href="/" className="text-3xl font-black text-[#0A1931] tracking-tighter" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+          <a href="/" className="text-3xl font-black text-[#0A1931] tracking-tighter">
             SG<span className="text-[#D4AF37] font-light">Expo</span>
           </a>
 
-          <ul className="hidden md:flex items-center gap-12">
-            {['Expertise', 'Experiences', 'Network'].map((item) => (
+          <ul className="hidden lg:flex items-center gap-8">
+            {['Home', 'About Us', 'Team', 'Projects', 'Contact Us'].map((item) => (
               <li key={item}>
-                <a href={`#${item.toLowerCase()}`} className="text-sm font-semibold tracking-wide text-gray-500 hover:text-[#0A1931] transition-colors relative group uppercase" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                <a href={`#${item.toLowerCase()}`} className="text-sm font-semibold tracking-wide text-gray-500 hover:text-[#0A1931] transition-colors relative group uppercase">
                   {item}
                   <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
                 </a>
@@ -150,54 +143,21 @@ export default function App() {
 
           <motion.button
             whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
             className="group relative px-8 py-3.5 bg-[#0A1931] text-white rounded-full font-semibold overflow-hidden shadow-[0_10px_20px_rgba(10,25,49,0.15)]"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#B87333] translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 ease-[0.16,1,0.3,1]" />
-            <span className="relative z-10 flex items-center gap-2">Initiate Contact <ArrowUpRight size={16} /></span>
+            <span className="relative z-10 flex items-center gap-2">Initiate Contact <ArrowRight size={16} /></span>
           </motion.button>
         </div>
       </motion.nav>
 
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center pt-24 z-10 max-w-7xl mx-auto px-8">
-        <motion.div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full" style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}>
+        <motion.div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full -mt-16 md:-mt-32 lg:-mt-24" style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}>
 
           {/* Left Side: Sequenced Content */}
           <div className="flex-1 flex flex-col items-start w-full relative z-20">
             <div className="relative w-full">
-
-              {/* Uploaded Video as an Animated Floating Logo */}
-              <motion.div 
-                initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tVideo + 0.3 }}
-                className="mb-8 relative w-full max-w-[250px] flex justify-start items-center"
-              >
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  src={v1Video}
-                  className="w-full h-auto mix-blend-multiply opacity-90"
-                  style={{
-                    filter: 'contrast(1.15) brightness(1.05)',
-                    maskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='8' /%3E%3C/filter%3E%3C/defs%3E%3Crect x='5%25' y='5%25' width='90%25' height='90%25' rx='25' fill='black' filter='url(%23b)' /%3E%3C/svg%3E")`,
-                    WebkitMaskImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Cdefs%3E%3Cfilter id='b'%3E%3CfeGaussianBlur stdDeviation='8' /%3E%3C/filter%3E%3C/defs%3E%3Crect x='5%25' y='5%25' width='90%25' height='90%25' rx='25' fill='black' filter='url(%23b)' /%3E%3C/svg%3E")`,
-                    maskSize: '100% 100%',
-                    WebkitMaskSize: '100% 100%',
-                    maskRepeat: 'no-repeat',
-                    WebkitMaskRepeat: 'no-repeat'
-                  }}
-                />
-              </motion.div>
-
-              <motion.div
-                initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tSubtitle }}
-                className="flex items-center gap-4 mb-8"
-              >
-                <div className="w-12 h-[1px] bg-[#D4AF37]" />
-                <p className="text-[#B87333] font-bold tracking-[0.25em] uppercase text-xs">India Pvt Ltd</p>
-              </motion.div>
 
               <div className="relative leading-[0.9] mb-12 z-10">
                 <motion.span
@@ -231,7 +191,6 @@ export default function App() {
               className="flex items-center gap-8"
             >
               <motion.button
-                onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 className="group flex items-center gap-4 px-10 py-5 bg-[#0A1931] text-white rounded-full text-lg font-medium shadow-[0_20px_40px_rgba(10,25,49,0.15)] hover:shadow-[0_25px_50px_rgba(10,25,49,0.25)] transition-all duration-500"
               >
@@ -242,7 +201,6 @@ export default function App() {
               </motion.button>
 
               <motion.button
-                onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
                 whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 className="group flex items-center gap-4 text-[#0A1931] font-semibold hover:text-[#D4AF37] transition-colors"
               >
@@ -290,6 +248,9 @@ export default function App() {
         </motion.div>
       </section>
 
+      {/* --- PREMIUM STORYTELLING GALLERY --- */}
+      <PremiumGallery images={galleryImages} />
+
       {/* --- CAPABILITIES MARQUEE --- */}
       <section className="relative py-40 z-10 overflow-hidden bg-gradient-to-b from-transparent to-[#FDFCF8] border-t border-gray-100/50">
         <div className="max-w-7xl mx-auto px-8 mb-24 flex flex-col items-center">
@@ -301,15 +262,23 @@ export default function App() {
           </motion.h2>
         </div>
 
-        <div className="relative w-full overflow-hidden flex py-12 pointer-events-auto group mask-gradient">
-          <motion.div className="flex gap-10 w-max pl-10" animate={{ x: ["0%", "-50%"] }} transition={{ repeat: Infinity, ease: "linear", duration: 45 }} style={{ animationPlayState: 'var(--play-state, running)' }} onHoverStart={(e) => (e.currentTarget.style.setProperty('--play-state', 'paused'))} onHoverEnd={(e) => (e.currentTarget.style.setProperty('--play-state', 'running'))}>
-            {marqueeItems.map((svc, idx) => (
-              <motion.div key={idx} onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)} className="relative w-[400px] h-[320px] bg-white border border-[#D4AF37]/10 rounded-[2.5rem] p-10 cursor-pointer shadow-[0_15px_40px_rgba(10,25,49,0.04)] transition-all duration-700 overflow-hidden group/card hover:border-[#D4AF37]/40 hover:shadow-[0_30px_60px_rgba(212,175,55,0.12)] hover:-translate-y-4 flex-shrink-0 flex flex-col justify-between">
+        <div className="relative w-full max-w-7xl mx-auto">
+          <style>{`
+            .no-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+          <div 
+            className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-4 md:px-8 pb-16 pt-4 w-full no-scrollbar"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {services.map((svc, idx) => (
+              <div key={idx} className="relative w-[85vw] md:w-[350px] lg:w-[400px] h-[320px] bg-white border border-[#D4AF37]/10 rounded-[2.5rem] p-8 md:p-10 cursor-pointer shadow-[0_15px_40px_rgba(10,25,49,0.04)] transition-all duration-700 overflow-hidden group/card hover:border-[#D4AF37]/40 hover:shadow-[0_30px_60px_rgba(212,175,55,0.12)] hover:-translate-y-2 flex-shrink-0 flex flex-col justify-between snap-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 via-transparent to-[#B87333]/[0.05] opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                 <div className="relative z-10 flex justify-between items-start">
-                  <div className="w-20 h-20 rounded-2xl bg-[#FDFCF8] border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] group-hover/card:text-white group-hover/card:bg-[#0A1931] group-hover/card:scale-110 group-hover/card:-rotate-6 transition-all duration-500 shadow-sm">
-                    <svc.icon size={36} strokeWidth={1.5} />
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#FDFCF8] border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] group-hover/card:text-white group-hover/card:bg-[#0A1931] group-hover/card:scale-110 group-hover/card:-rotate-6 transition-all duration-500 shadow-sm">
+                    <svc.icon size={32} strokeWidth={1.5} />
                   </div>
                   <div className="w-10 h-10 rounded-full border border-[#D4AF37]/30 flex items-center justify-center opacity-0 -translate-x-4 group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-500 text-[#D4AF37]">
                     <ArrowUpRight size={20} />
@@ -317,21 +286,21 @@ export default function App() {
                 </div>
 
                 <div className="relative z-10 mt-8">
-                  <h3 className="text-3xl font-bold text-[#0A1931] mb-4 tracking-tight">{svc.title}</h3>
-                  <p className="text-gray-500 leading-relaxed text-lg">{svc.desc}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#0A1931] mb-3 md:mb-4 tracking-tight">{svc.title}</h3>
+                  <p className="text-gray-500 leading-relaxed text-base md:text-lg">{svc.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* --- PREMIERE FOOTER --- */}
-      <footer className="relative bg-[#0A1931] text-white pt-32 pb-12 overflow-hidden rounded-t-[4rem] z-20">
+      <footer className="relative bg-[#0A1931] text-white pt-16 pb-8 overflow-hidden rounded-t-[3rem] z-20">
         <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at top right, #D4AF37 0%, transparent 60%)' }} />
 
         <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div className="lg:col-span-2">
               <h3 className="text-5xl font-black tracking-tighter mb-6">
                 SG<span className="text-[#D4AF37] font-light">Expo</span>
@@ -364,7 +333,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-gray-500">&copy; {new Date().getFullYear()} SG Expo Connect India Pvt Ltd. All rights reserved.</p>
             <div className="flex gap-8 text-gray-500 text-sm">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
@@ -380,10 +349,7 @@ export default function App() {
           mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
           -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-        /* Hide default cursor on desktop since we have a custom one */
-        @media (pointer: fine) {
-          body, a, button { cursor: none !important; }
-        }
+
       `}} />
     </main>
   );
