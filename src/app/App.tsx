@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Globe, Briefcase, Users, Zap, ArrowRight, Play, ArrowUpRight, Mail } from 'lucide-react';
+import { Link } from 'react-router';
 import introVideo from '../imports/intro-video.mp4';
 import PremiumGallery from './components/PremiumGallery';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
+import OurExpertise from './components/OurExpertise';
 
 const galleryImages = [
   {
@@ -41,7 +45,7 @@ const gatewaySections = [
     title: "About Us",
     subtitle: "Our Story",
     description: "Discover our journey, our mission, and what drives us to create the world's most impactful business platforms and exhibitions.",
-    link: "#about",
+    link: "/about-us",
     images: [
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop"
@@ -161,38 +165,7 @@ export default function App() {
       </div>
 
       {/* --- SMART GLASS NAVIGATION --- */}
-      <motion.nav
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: tNav }}
-        className={`fixed top-0 w-full z-50 transition-all duration-700 ${isScrolled ? 'bg-[#FDFCF8]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3' : 'bg-transparent py-8'
-          }`}
-      >
-        <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-          <a href="/" className="text-3xl font-black text-[#0A1931] tracking-tighter">
-            SG<span className="text-[#D4AF37] font-light">Expo</span>
-          </a>
-
-          <ul className="hidden lg:flex items-center gap-8">
-            {['Home', 'About Us', 'Team', 'Projects', 'Contact Us'].map((item) => (
-              <li key={item}>
-                <a href={`#${item.toLowerCase()}`} className="text-sm font-semibold tracking-wide text-gray-500 hover:text-[#0A1931] transition-colors relative group uppercase">
-                  {item}
-                  <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-            className="group relative px-8 py-3.5 bg-[#0A1931] text-white rounded-full font-semibold overflow-hidden shadow-[0_10px_20px_rgba(10,25,49,0.15)]"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#B87333] translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 ease-[0.16,1,0.3,1]" />
-            <span className="relative z-10 flex items-center gap-2">Initiate Contact <ArrowRight size={16} /></span>
-          </motion.button>
-        </div>
-      </motion.nav>
+      <Navigation delay={tNav} />
 
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center pt-24 z-10 max-w-7xl mx-auto px-8">
@@ -355,6 +328,9 @@ export default function App() {
       {/* --- PREMIUM STORYTELLING GALLERY --- */}
       <PremiumGallery images={galleryImages} />
 
+      {/* --- STANDALONE OUR EXPERTISE SECTION --- */}
+      <OurExpertise />
+
       {/* --- PAGE GATEWAY SECTIONS --- */}
       <div className="relative z-10 bg-white">
         {gatewaySections.map((section, idx) => {
@@ -363,12 +339,12 @@ export default function App() {
             <section key={idx} className={`relative py-32 overflow-hidden ${isEven ? 'bg-white' : 'bg-[#FDFCF8] border-y border-gray-100/50'}`}>
               <div className="max-w-7xl mx-auto px-8">
                 <div className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-24 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-                  
+
                   {/* Text Content */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: isEven ? -40 : 40 }} 
-                    whileInView={{ opacity: 1, x: 0 }} 
-                    viewport={{ once: true, margin: "-100px" }} 
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8 }}
                     className="flex-1 w-full"
                   >
@@ -381,17 +357,24 @@ export default function App() {
                     <p className="text-xl text-gray-600 font-light leading-relaxed mb-10">
                       {section.description}
                     </p>
-                    <a href={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
-                      Read More
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                    </a>
+                    {section.link.startsWith('/') ? (
+                      <Link to={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
+                        Read More
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    ) : (
+                      <a href={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
+                        Read More
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
                   </motion.div>
 
                   {/* Stacked Image Collection */}
-                  <motion.div 
-                    initial={{ opacity: 0, y: 40 }} 
-                    whileInView={{ opacity: 1, y: 0 }} 
-                    viewport={{ once: true, margin: "-100px" }} 
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="flex-1 w-full"
                   >
@@ -401,7 +384,7 @@ export default function App() {
                         <img src={section.images[1]} className="w-full h-full object-cover opacity-70 mix-blend-multiply" alt="Background" />
                         <div className="absolute inset-0 bg-[#0A1931]/10" />
                       </div>
-                      
+
                       {/* Front Image Card */}
                       <div className="absolute inset-0 sm:inset-4 bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(10,25,49,0.15)] transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:-rotate-[4deg] group-hover:-translate-x-6 group-hover:translate-y-2 z-10 border-[6px] border-white" style={{ transformOrigin: 'bottom right', rotate: '-2deg' }}>
                         <img src={section.images[0]} className="w-full h-full object-cover" alt={section.title} />
@@ -418,52 +401,7 @@ export default function App() {
       </div>
 
       {/* --- PREMIERE FOOTER --- */}
-      <footer className="relative bg-[#0A1931] text-white pt-16 pb-8 overflow-hidden rounded-t-[3rem] z-20">
-        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle at top right, #D4AF37 0%, transparent 60%)' }} />
-
-        <div className="max-w-7xl mx-auto px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-            <div className="lg:col-span-2">
-              <h3 className="text-5xl font-black tracking-tighter mb-6">
-                SG<span className="text-[#D4AF37] font-light">Expo</span>
-              </h3>
-              <p className="text-gray-400 text-xl max-w-md font-light leading-relaxed mb-10">
-                Redefining global business connections through extraordinary exhibition experiences.
-              </p>
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center hover:bg-[#D4AF37] hover:border-transparent transition-all cursor-pointer"><Mail size={20} /></div>
-                <div className="w-12 h-12 rounded-full border border-[#D4AF37]/30 flex items-center justify-center hover:bg-[#D4AF37] hover:border-transparent transition-all cursor-pointer"><Globe size={20} /></div>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-bold mb-8 text-white">Platform</h4>
-              <ul className="space-y-4">
-                {['Exhibitions', 'Networking', 'Partnerships', 'Global Reach'].map(link => (
-                  <li key={link}><a href="#" className="text-gray-400 hover:text-[#D4AF37] transition-colors">{link}</a></li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-xl font-bold mb-8 text-white">Company</h4>
-              <ul className="space-y-4">
-                {['About SG Expo', 'Leadership', 'Careers', 'Contact'].map(link => (
-                  <li key={link}><a href="#" className="text-gray-400 hover:text-[#D4AF37] transition-colors">{link}</a></li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-gray-500">&copy; {new Date().getFullYear()} SG Expo Connect India Pvt Ltd. All rights reserved.</p>
-            <div className="flex gap-8 text-gray-500 text-sm">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <style dangerouslySetInnerHTML={{
         __html: `
