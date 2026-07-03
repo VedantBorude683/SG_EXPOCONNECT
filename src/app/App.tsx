@@ -6,7 +6,6 @@ import introVideo from '../imports/intro-video.mp4';
 import PremiumGallery from './components/PremiumGallery';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-import OurExpertise from './components/OurExpertise';
 
 const galleryImages = [
   {
@@ -165,8 +164,7 @@ export default function App() {
       </div>
 
       {/* --- SMART GLASS NAVIGATION --- */}
-      <Navigation delay={tNav} />
-
+      
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center pt-24 z-10 max-w-7xl mx-auto px-8">
         <motion.div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full -mt-16 md:-mt-32 lg:-mt-24" style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}>
@@ -327,9 +325,6 @@ export default function App() {
 
       {/* --- PREMIUM STORYTELLING GALLERY --- */}
       <PremiumGallery images={galleryImages} />
-
-      {/* --- STANDALONE OUR EXPERTISE SECTION --- */}
-      <OurExpertise />
 
       {/* --- PAGE GATEWAY SECTIONS --- */}
       <div className="relative z-10 bg-white">

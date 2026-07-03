@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 
 // Card Data with inline animated SVGs for top-tier visual feedback
 const expertiseCards = [
@@ -95,20 +95,8 @@ const expertiseCards = [
 ];
 
 export default function OurExpertise() {
-  const targetRef = useRef<HTMLDivElement>(null);
-  
-  // Attach Framer Motion's scroll hook to track the wrapper's physical scroll position
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  // Calculate negative horizontal translation (x) of the horizontal track.
-  // -60% perfectly reveals the 4th massive card dynamically while keeping it framed correctly.
-  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-
   return (
-    // 1. The Target Wrapper: 300vh height ensures a beautiful, long horizontal scroll experience
-    <section ref={targetRef} className="relative w-full bg-[#FDFCF8] lg:h-[300vh]">
+    <section className="relative w-full bg-[#FDFCF8] py-24 md:py-32 overflow-hidden">
       
       {/* Subtle, High-End Dot-Matrix Background Texture */}
       <div 
@@ -119,105 +107,75 @@ export default function OurExpertise() {
         }} 
       />
 
-      {/* 2. The Sticky Container */}
-      <div className="lg:sticky lg:top-0 lg:h-screen w-full flex flex-col lg:flex-row items-center lg:overflow-hidden relative z-10">
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+
+      <div className="w-full flex flex-col lg:flex-row items-center relative z-10">
         
-        <div className="w-full h-full flex flex-col lg:flex-row items-center max-w-[100vw]">
-          
-          {/* Header Column: Sticky on the left */}
-          <div className="w-full lg:w-[35%] lg:min-w-[450px] px-8 lg:px-16 pt-24 lg:pt-0 z-20 flex flex-col justify-center h-full bg-[#FDFCF8]/80 backdrop-blur-md lg:bg-transparent relative shadow-xl lg:shadow-none pb-12 lg:pb-0">
-            <h2 
-              className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#0A1931] tracking-tight leading-[1.1] mb-6"
-              style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
-            >
-              Orchestrating <br className="hidden lg:block" />
-              Global Business <br className="hidden lg:block" />
-              <span className="italic text-[#D4AF37]">Ecosystems.</span>
-            </h2>
-            <p className="text-xl text-gray-600 font-light leading-relaxed max-w-sm">
-              We engineer world-class trade exhibitions and B2B platforms that accelerate industry growth and forge international partnerships.
-            </p>
-          </div>
-
-          {/* Horizontal Track (Desktop Only) */}
-          <div className="hidden lg:flex w-[65%] h-full items-center relative">
-            
-            {/* Elegant Gradient Layout Line */}
-            <div className="absolute top-1/2 left-0 w-[400vw] h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent -translate-y-1/2 z-0" />
-
-            {/* The Animated Track holding the cards */}
-            <motion.div style={{ x }} className="flex gap-12 px-12 z-10 w-max items-center h-full">
-              {expertiseCards.map((card) => (
-                <motion.div 
-                  key={card.id}
-                  // 4. Micro-Interactions: Premium Physical Lift
-                  whileHover={{ y: -12, scale: 1.01 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="bg-white/40 backdrop-blur-2xl border border-white/60 shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-10 min-w-[460px] w-[460px] h-[520px] flex flex-col justify-between cursor-pointer relative group transition-colors duration-300 hover:bg-white/60"
-                >
-                  {/* Top Zone: Animated SVG Logo inside Soft Gold Squircle */}
-                  <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] p-5 shadow-inner border border-[#D4AF37]/20">
-                    {card.renderIcon()}
-                  </div>
-                  
-                  {/* Middle Zone: Rich Editorial Typography */}
-                  <div className="mt-8 mb-auto">
-                    <h3 className="text-3xl font-bold text-[#0A1931] mb-4 tracking-tight">
-                      {card.title}
-                    </h3>
-                    <p className="text-xl text-gray-600 leading-relaxed font-light">
-                      {card.desc}
-                    </p>
-                  </div>
-
-                  {/* Bottom Zone: Premium Feature Badges */}
-                  <div className="flex items-center gap-3 mt-8 flex-wrap">
-                    {card.tags.map((tag, i) => (
-                      <span key={i} className="px-4 py-2 bg-white/50 backdrop-blur-md border border-gray-200/50 rounded-full text-sm font-semibold text-[#0A1931] tracking-wide shadow-sm group-hover:bg-white transition-colors duration-300">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Responsive Fallback: Vertical Stack for Mobile */}
-          <div className="lg:hidden flex flex-col gap-10 px-6 pb-24 pt-12 w-full relative z-10">
-             {/* Vertical Timeline Gradient for mobile */}
-             <div className="absolute top-12 left-[4.5rem] w-[2px] h-[80%] bg-gradient-to-b from-transparent via-gray-300 to-transparent z-0" />
-
-             {expertiseCards.map((card) => (
-               <div 
-                 key={card.id}
-                 className="bg-white/60 backdrop-blur-2xl border border-white/60 shadow-xl rounded-[2rem] p-8 flex flex-col justify-between relative z-10 w-full max-w-md mx-auto min-h-[420px]"
-               >
-                 <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] p-4 shadow-inner border border-[#D4AF37]/20 mb-6">
-                   {card.renderIcon()}
-                 </div>
-                 
-                 <div className="mb-8">
-                   <h3 className="text-2xl font-bold text-[#0A1931] mb-3 tracking-tight">
-                     {card.title}
-                   </h3>
-                   <p className="text-lg text-gray-600 leading-relaxed font-light">
-                     {card.desc}
-                   </p>
-                 </div>
-
-                 <div className="flex items-center gap-2 flex-wrap mt-auto">
-                    {card.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1.5 bg-white/50 border border-gray-200/50 rounded-full text-xs font-semibold text-[#0A1931] shadow-sm">
-                        {tag}
-                      </span>
-                    ))}
-                 </div>
-               </div>
-             ))}
-          </div>
-
+        {/* Header Column */}
+        <div className="w-full lg:w-[35%] lg:min-w-[450px] px-8 lg:px-16 mb-12 lg:mb-0 flex flex-col justify-center">
+          <h2 
+            className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#0A1931] tracking-tight leading-[1.1] mb-6"
+            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+          >
+            Orchestrating <br className="hidden lg:block" />
+            Global Business <br className="hidden lg:block" />
+            <span className="italic text-[#D4AF37]">Ecosystems.</span>
+          </h2>
+          <p className="text-xl text-gray-600 font-light leading-relaxed max-w-sm">
+            We engineer world-class trade exhibitions and B2B platforms that accelerate industry growth and forge international partnerships.
+          </p>
         </div>
+
+        {/* Manually Scrollable Horizontal Track */}
+        <div className="w-full lg:w-[65%] relative">
+          
+          {/* Elegant Gradient Layout Line */}
+          <div className="hidden lg:block absolute top-1/2 left-0 w-[200vw] h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent -translate-y-1/2 z-0 pointer-events-none" />
+
+          {/* Scroll Container */}
+          <div 
+            className="flex gap-8 lg:gap-12 px-8 lg:px-12 pb-16 pt-8 overflow-x-auto snap-x snap-mandatory no-scrollbar relative z-10 w-full"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {expertiseCards.map((card) => (
+              <motion.div 
+                key={card.id}
+                whileHover={{ y: -12, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-white/60 lg:bg-white/40 backdrop-blur-2xl border border-white/60 shadow-xl lg:shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8 lg:p-10 shrink-0 w-[85vw] md:w-[400px] lg:w-[460px] min-h-[460px] lg:h-[520px] flex flex-col justify-between cursor-pointer relative group transition-colors duration-300 hover:bg-white snap-center"
+              >
+                {/* Top Zone: Animated SVG Logo inside Soft Gold Squircle */}
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-3xl bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] p-4 lg:p-5 shadow-inner border border-[#D4AF37]/20">
+                  {card.renderIcon()}
+                </div>
+                
+                {/* Middle Zone: Rich Editorial Typography */}
+                <div className="mt-8 mb-auto">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-[#0A1931] mb-4 tracking-tight">
+                    {card.title}
+                  </h3>
+                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light">
+                    {card.desc}
+                  </p>
+                </div>
+
+                {/* Bottom Zone: Premium Feature Badges */}
+                <div className="flex items-center gap-2 lg:gap-3 mt-8 flex-wrap">
+                  {card.tags.map((tag, i) => (
+                    <span key={i} className="px-3 lg:px-4 py-1.5 lg:py-2 bg-white/50 backdrop-blur-md border border-gray-200/50 rounded-full text-xs lg:text-sm font-semibold text-[#0A1931] tracking-wide shadow-sm group-hover:bg-white transition-colors duration-300">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

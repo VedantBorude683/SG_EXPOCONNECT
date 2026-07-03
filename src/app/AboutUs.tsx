@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import AntiGravityHero from './components/AntiGravityHero';
 import OurStory from './components/OurStory';
 import OurExpertise from './components/OurExpertise';
+import OurMission from './components/OurMission';
 
 export default function AboutUs() {
   const fadeUpSequence = {
@@ -21,8 +21,6 @@ export default function AboutUs() {
         <motion.div animate={{ x: ['5%', '-5%', '5%'], y: ['5%', '-5%', '5%'], scale: [1, 1.2, 1] }} transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[#B87333]/[0.06] rounded-full blur-[120px]" />
       </div>
 
-      <Navigation delay={0} />
-
       {/* Anti-Gravity Hero Section */}
       <AntiGravityHero />
 
@@ -31,6 +29,9 @@ export default function AboutUs() {
 
       {/* 3D Scrolling Expertise & Mission Section */}
       <OurExpertise />
+
+      {/* Our Mission Section */}
+      <OurMission />
 
       <Footer />
     </main>
