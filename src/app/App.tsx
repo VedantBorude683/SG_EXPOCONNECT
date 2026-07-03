@@ -36,6 +36,49 @@ const services = [
 
 const marqueeItems = [...services, ...services, ...services, ...services];
 
+const gatewaySections = [
+  {
+    title: "About Us",
+    subtitle: "Our Story",
+    description: "Discover our journey, our mission, and what drives us to create the world's most impactful business platforms and exhibitions.",
+    link: "#about",
+    images: [
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop"
+    ]
+  },
+  {
+    title: "Our Team",
+    subtitle: "The Visionaries",
+    description: "Meet the strategists and execution experts who work relentlessly behind the scenes to make every event a masterpiece.",
+    link: "#team",
+    images: [
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
+    ]
+  },
+  {
+    title: "Projects",
+    subtitle: "Portfolio",
+    description: "Explore our portfolio of world-class exhibitions, global summits, and high-profile industry networking events.",
+    link: "#projects",
+    images: [
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1974&auto=format&fit=crop"
+    ]
+  },
+  {
+    title: "Contact Us",
+    subtitle: "Get In Touch",
+    description: "Ready to elevate your brand globally? Get in touch with our team to start planning your next monumental business opportunity.",
+    link: "#contact",
+    images: [
+      "https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=2071&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1557425955-df376b5903c8?q=80&w=2070&auto=format&fit=crop"
+    ]
+  }
+];
+
 export default function App() {
   const { scrollYProgress } = useScroll();
   const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
@@ -160,13 +203,74 @@ export default function App() {
             <div className="relative w-full">
 
               <div className="relative leading-[0.9] mb-12 z-10">
-                <motion.span
+                <motion.div
                   initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tTitle1 }}
-                  className="block text-[clamp(4.5rem,8vw,8rem)] font-black text-[#0A1931] tracking-[0.2em]"
+                  className="flex items-center text-[clamp(4.5rem,8vw,8rem)] font-black whitespace-nowrap"
                   style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
                 >
-                  sg expo
-                </motion.span>
+                  {/* True 3D Container for perfect orbital intersection */}
+                  <div className="relative inline-flex items-center justify-center mr-6 pr-2" style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}>
+
+                    {/* The Text (Elevated in 3D space, Clipped & Merged S and G) */}
+                    <div style={{ transform: 'translateZ(10px)', transformStyle: 'preserve-3d' }} className="relative z-10 flex items-center">
+                      <span
+                        className="text-[#1a365d] z-20"
+                        style={{
+                          transform: 'scaleX(1.15)',
+                          textShadow: '1px 1px 0 #0f2139, 2px 2px 0 #0b182a, 3px 3px 0 #060c15, 4px 4px 10px rgba(0,0,0,0.4)'
+                        }}
+                      >
+                        S
+                      </span>
+                      {/* Clip the left part of G so it fits perfectly behind the S */}
+                      <span
+                        className="text-[#D4AF37] z-10 -ml-[0.35em]"
+                        style={{
+                          transform: 'scaleX(1.15)',
+                          clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 30% 100%)',
+                          textShadow: '1px 1px 0 #a38528, 2px 2px 0 #856a1e, 3px 3px 0 #614d15, 4px 4px 10px rgba(0,0,0,0.4)'
+                        }}
+                      >
+                        G
+                      </span>
+                    </div>
+
+                    {/* The 3D Orbit Ring (More Compact) */}
+                    <div
+                      className="absolute pointer-events-none"
+                      style={{
+                        // 🔹 CHANGE THESE VALUES to adjust the size of the ring (e.g. 180%, 200%, 220%)
+                        width: '150%', height: '150%',
+                        // 🔹 CHANGE 'rotateX' to adjust how flat the ring lies (e.g. 70deg is rounder, 85deg is flatter)
+                        transform: 'translateZ(0px) rotateZ(-30deg) rotateX(78deg)',
+                        transformStyle: 'preserve-3d'
+                      }}
+                    >
+                      <motion.div
+                        className="w-full h-full rounded-full border-[clamp(6px,0.8vw,12px)] border-[#F0D060] opacity-90 shadow-[0_0_20px_rgba(212,175,55,0.5)]"
+                        style={{ transformStyle: 'preserve-3d', borderTopColor: '#F0D060', borderBottomColor: '#F0D060' }}
+                        animate={{ rotateZ: [0, 360] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                      >
+                        {/* Moving Glowing Dot on the ring */}
+                        <div
+                          className="absolute top-0 left-1/2 w-[clamp(12px,1.5vw,20px)] h-[clamp(12px,1.5vw,20px)] bg-white rounded-full shadow-[0_0_30px_8px_#D4AF37]"
+                          style={{ transform: 'translate(-50%, -50%) rotateX(-80deg)' }}
+                        />
+                      </motion.div>
+                    </div>
+
+                  </div>
+                  <span
+                    className="text-[#1a365d] tracking-[0.2em] inline-block ml-2"
+                    style={{
+                      transform: 'scaleX(1.15)',
+                      textShadow: '1px 1px 0 #0f2139, 2px 2px 0 #0b182a, 3px 3px 0 #060c15, 4px 4px 10px rgba(0,0,0,0.4)'
+                    }}
+                  >
+                    Expo
+                  </span>
+                </motion.div>
                 <motion.span
                   initial={{ clipPath: 'inset(0 100% 0 0)' }}
                   animate={{ clipPath: 'inset(0 0% 0 0)' }}
@@ -251,49 +355,67 @@ export default function App() {
       {/* --- PREMIUM STORYTELLING GALLERY --- */}
       <PremiumGallery images={galleryImages} />
 
-      {/* --- CAPABILITIES MARQUEE --- */}
-      <section className="relative py-40 z-10 overflow-hidden bg-gradient-to-b from-transparent to-[#FDFCF8] border-t border-gray-100/50">
-        <div className="max-w-7xl mx-auto px-8 mb-24 flex flex-col items-center">
-          <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="px-6 py-2 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#B87333] font-semibold text-sm tracking-widest uppercase mb-8 shadow-sm">
-            Global Infrastructure
-          </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="text-[clamp(3rem,6vw,4.5rem)] font-black text-[#0A1931] tracking-tighter text-center">
-            Unrivaled <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#B87333]">Capabilities</span>
-          </motion.h2>
-        </div>
+      {/* --- PAGE GATEWAY SECTIONS --- */}
+      <div className="relative z-10 bg-white">
+        {gatewaySections.map((section, idx) => {
+          const isEven = idx % 2 === 0;
+          return (
+            <section key={idx} className={`relative py-32 overflow-hidden ${isEven ? 'bg-white' : 'bg-[#FDFCF8] border-y border-gray-100/50'}`}>
+              <div className="max-w-7xl mx-auto px-8">
+                <div className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-24 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
+                  
+                  {/* Text Content */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: isEven ? -40 : 40 }} 
+                    whileInView={{ opacity: 1, x: 0 }} 
+                    viewport={{ once: true, margin: "-100px" }} 
+                    transition={{ duration: 0.8 }}
+                    className="flex-1 w-full"
+                  >
+                    <div className="px-6 py-2 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#B87333] font-semibold text-sm tracking-widest uppercase mb-6 shadow-sm inline-block">
+                      {section.subtitle}
+                    </div>
+                    <h2 className="text-[clamp(2.5rem,4vw,3.5rem)] font-black text-[#0A1931] tracking-tight leading-[1.1] mb-6">
+                      {section.title}
+                    </h2>
+                    <p className="text-xl text-gray-600 font-light leading-relaxed mb-10">
+                      {section.description}
+                    </p>
+                    <a href={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
+                      Read More
+                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </motion.div>
 
-        <div className="relative w-full max-w-7xl mx-auto">
-          <style>{`
-            .no-scrollbar::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
-          <div 
-            className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory px-4 md:px-8 pb-16 pt-4 w-full no-scrollbar"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {services.map((svc, idx) => (
-              <div key={idx} className="relative w-[85vw] md:w-[350px] lg:w-[400px] h-[320px] bg-white border border-[#D4AF37]/10 rounded-[2.5rem] p-8 md:p-10 cursor-pointer shadow-[0_15px_40px_rgba(10,25,49,0.04)] transition-all duration-700 overflow-hidden group/card hover:border-[#D4AF37]/40 hover:shadow-[0_30px_60px_rgba(212,175,55,0.12)] hover:-translate-y-2 flex-shrink-0 flex flex-col justify-between snap-center">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 via-transparent to-[#B87333]/[0.05] opacity-0 group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  {/* Stacked Image Collection */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 40 }} 
+                    whileInView={{ opacity: 1, y: 0 }} 
+                    viewport={{ once: true, margin: "-100px" }} 
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="flex-1 w-full"
+                  >
+                    <div className="relative w-full aspect-[4/3] group cursor-pointer perspective-[1000px]">
+                      {/* Back Image Card (slightly offset) */}
+                      <div className="absolute inset-4 sm:inset-8 bg-gray-200 rounded-[2rem] overflow-hidden shadow-xl transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:rotate-[8deg] group-hover:translate-x-10 group-hover:-translate-y-4" style={{ transformOrigin: 'bottom left', rotate: '4deg' }}>
+                        <img src={section.images[1]} className="w-full h-full object-cover opacity-70 mix-blend-multiply" alt="Background" />
+                        <div className="absolute inset-0 bg-[#0A1931]/10" />
+                      </div>
+                      
+                      {/* Front Image Card */}
+                      <div className="absolute inset-0 sm:inset-4 bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(10,25,49,0.15)] transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:-rotate-[4deg] group-hover:-translate-x-6 group-hover:translate-y-2 z-10 border-[6px] border-white" style={{ transformOrigin: 'bottom right', rotate: '-2deg' }}>
+                        <img src={section.images[0]} className="w-full h-full object-cover" alt={section.title} />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/0 via-white/10 to-[#D4AF37]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                      </div>
+                    </div>
+                  </motion.div>
 
-                <div className="relative z-10 flex justify-between items-start">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-[#FDFCF8] border border-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37] group-hover/card:text-white group-hover/card:bg-[#0A1931] group-hover/card:scale-110 group-hover/card:-rotate-6 transition-all duration-500 shadow-sm">
-                    <svc.icon size={32} strokeWidth={1.5} />
-                  </div>
-                  <div className="w-10 h-10 rounded-full border border-[#D4AF37]/30 flex items-center justify-center opacity-0 -translate-x-4 group-hover/card:opacity-100 group-hover/card:translate-x-0 transition-all duration-500 text-[#D4AF37]">
-                    <ArrowUpRight size={20} />
-                  </div>
-                </div>
-
-                <div className="relative z-10 mt-8">
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#0A1931] mb-3 md:mb-4 tracking-tight">{svc.title}</h3>
-                  <p className="text-gray-500 leading-relaxed text-base md:text-lg">{svc.desc}</p>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </section>
+          )
+        })}
+      </div>
 
       {/* --- PREMIERE FOOTER --- */}
       <footer className="relative bg-[#0A1931] text-white pt-16 pb-8 overflow-hidden rounded-t-[3rem] z-20">
