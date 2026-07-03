@@ -39,7 +39,7 @@ export default function OurStory() {
   ];
 
   return (
-    <section className="relative w-full bg-[#FDFCF8] py-24 md:py-32 px-6 lg:px-12 overflow-hidden z-10">
+    <section className="relative w-full bg-transparent py-24 md:py-32 px-6 lg:px-12 overflow-hidden z-10">
       <div className="max-w-7xl mx-auto">
         <motion.div 
           className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24"

@@ -220,17 +220,6 @@ export default function AntiGravityHero() {
           We make the <br className="hidden md:block" />
           <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-[#D4AF37] via-[#F0D060] to-[#8A6D1C] drop-shadow-[0_2px_15px_rgba(212,175,55,0.4)]">global</span> simple.
         </h1>
-        
-        {/* Initiate Contact Button */}
-        <motion.button
-          animate={{ boxShadow: ['0px 0px 0px 0px rgba(212,175,55,0)', '0px 0px 20px 5px rgba(212,175,55,0.3)', '0px 0px 0px 0px rgba(212,175,55,0)'] }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-8 px-10 py-4 bg-gradient-to-r from-[#0A1931] to-[#1e3a68] text-white rounded-full font-bold flex items-center gap-3 hover:shadow-[0_15px_30px_rgba(10,25,49,0.3)] transition-all border border-white/10"
-        >
-          Initiate Contact <ArrowRight size={18} className="text-[#D4AF37]" />
-        </motion.button>
       </motion.div>
 
     </section>

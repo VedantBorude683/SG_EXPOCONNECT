@@ -1,181 +1,185 @@
-import React from 'react';
-import { motion } from 'motion/react';
-
-// Card Data with inline animated SVGs for top-tier visual feedback
-const expertiseCards = [
-  {
-    id: 1,
-    title: "B2B Networking",
-    desc: "Curated business connections tailored to scale your reach globally across diverse emerging markets.",
-    tags: ["Verified Matches", "Global Buyers", "C-Level Access"],
-    renderIcon: () => (
-      <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-        {/* Network Mesh Lines */}
-        <motion.line x1="20" y1="50" x2="50" y2="20" stroke="currentColor" strokeWidth="2" strokeOpacity="0.4" />
-        <motion.line x1="50" y1="20" x2="80" y2="50" stroke="currentColor" strokeWidth="2" strokeOpacity="0.4" />
-        <motion.line x1="20" y1="50" x2="50" y2="80" stroke="currentColor" strokeWidth="2" strokeOpacity="0.4" />
-        <motion.line x1="50" y1="80" x2="80" y2="50" stroke="currentColor" strokeWidth="2" strokeOpacity="0.4" />
-        
-        {/* Central Pulse */}
-        <motion.circle cx="50" cy="50" r="14" fill="currentColor" fillOpacity="0.2" animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.5, 0.2] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
-        <motion.circle cx="50" cy="50" r="6" fill="currentColor" />
-        
-        {/* Satellite Nodes */}
-        <motion.circle cx="20" cy="50" r="5" fill="currentColor" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0.5 }} />
-        <motion.circle cx="80" cy="50" r="5" fill="currentColor" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 1 }} />
-        <motion.circle cx="50" cy="20" r="5" fill="currentColor" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 1.5 }} />
-        <motion.circle cx="50" cy="80" r="5" fill="currentColor" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 2, repeat: Infinity, delay: 0 }} />
-      </svg>
-    )
-  },
-  {
-    id: 2,
-    title: "World-Class Events",
-    desc: "Premium industry conferences and flawless on-site event execution designed to leave a lasting impact.",
-    tags: ["Turnkey Execution", "Hybrid Formats", "VIP Hosting"],
-    renderIcon: () => (
-      <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-        <motion.g animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} style={{ originX: '50px', originY: '50px' }}>
-          {/* Geometric Star Spotlight */}
-          <path d="M 50 10 L 60 40 L 90 50 L 60 60 L 50 90 L 40 60 L 10 50 L 40 40 Z" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="1" />
-          <path d="M 50 25 L 56 44 L 75 50 L 56 56 L 50 75 L 44 56 L 25 50 L 44 44 Z" fill="currentColor" />
-        </motion.g>
-        <motion.circle cx="50" cy="50" r="3" fill="#fff" animate={{ opacity: [0, 1, 0], scale: [0.8, 1.2, 0.8] }} transition={{ duration: 2, repeat: Infinity }} />
-      </svg>
-    )
-  },
-  {
-    id: 3,
-    title: "Market Expansion",
-    desc: "Bridging local innovators with global stakeholders to seamlessly scale your business ecosystem.",
-    tags: ["Strategic Entry", "Local Partners", "Scale Fast"],
-    renderIcon: () => (
-      <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-        <motion.circle cx="50" cy="50" r="10" fill="currentColor" />
-        {/* Expanding Concentric Radar Rings */}
-        <motion.circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="2" animate={{ scale: [1, 1.8], opacity: [0.6, 0] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: 0 }} />
-        <motion.circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="2" animate={{ scale: [1, 1.8], opacity: [0.6, 0] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut", delay: 1.25 }} />
-        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" opacity="0.3" />
-        {/* Radar Sweep Arc */}
-        <motion.path d="M 50 50 L 50 12 A 38 38 0 0 1 88 50 Z" fill="currentColor" opacity="0.1" style={{ originX: '50px', originY: '50px' }} animate={{ rotate: 360 }} transition={{ duration: 4, repeat: Infinity, ease: "linear" }} />
-      </svg>
-    )
-  },
-  {
-    id: 4,
-    title: "End-to-End Solutions",
-    desc: "Comprehensive event management from concept development, marketing, to post-event data analysis.",
-    tags: ["Concept Design", "Full Logistics", "Data Analytics"],
-    renderIcon: () => (
-      <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-        {/* Infinity / Continuous Loop Track */}
-        <path 
-          d="M 25 50 C 25 30, 45 30, 50 50 C 55 70, 75 70, 75 50 C 75 30, 55 30, 50 50 C 45 70, 25 70, 25 50 Z" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="3" 
-          strokeOpacity="0.2"
-        />
-        {/* Drawing Infinity Loop */}
-        <motion.path 
-          d="M 25 50 C 25 30, 45 30, 50 50 C 55 70, 75 70, 75 50 C 75 30, 55 30, 50 50 C 45 70, 25 70, 25 50 Z" 
-          fill="none" 
-          stroke="currentColor" 
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-        />
-        <circle cx="25" cy="50" r="5" fill="currentColor" />
-        <circle cx="75" cy="50" r="5" fill="currentColor" />
-      </svg>
-    )
-  }
-];
+import React, { useRef, useState } from 'react';
+import { motion, useInView } from 'motion/react';
+import { Briefcase, Globe, Zap } from 'lucide-react';
 
 export default function OurExpertise() {
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-15%" });
+
+  const [isSettled, setIsSettled] = useState(false);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+
+  // Close active card if user clicks outside
+  const handleStageClick = () => {
+    if (activeCard !== null) setActiveCard(null);
+  };
+
   return (
-    <section className="relative w-full bg-[#FDFCF8] py-24 md:py-32 overflow-hidden">
-      
-      {/* Subtle, High-End Dot-Matrix Background Texture */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-60 z-0" 
-        style={{ 
-          backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)', 
-          backgroundSize: '24px 24px' 
-        }} 
-      />
-
-      <style>{`
-        .no-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
-
-      <div className="w-full flex flex-col lg:flex-row items-center relative z-10">
+    <section className="w-full bg-transparent overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 py-24 px-8 overflow-visible">
         
-        {/* Header Column */}
-        <div className="w-full lg:w-[35%] lg:min-w-[450px] px-8 lg:px-16 mb-12 lg:mb-0 flex flex-col justify-center">
+        {/* Left Column (Typography - 45% width) */}
+        <div className="w-full lg:w-[45%] flex flex-col justify-center relative z-40">
           <h2 
-            className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#0A1931] tracking-tight leading-[1.1] mb-6"
+            className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-[#0A1931]" 
             style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
           >
-            Orchestrating <br className="hidden lg:block" />
-            Global Business <br className="hidden lg:block" />
-            <span className="italic text-[#D4AF37]">Ecosystems.</span>
+            Orchestrating Global Business <span className="text-[#D4AF37] italic pr-2">Ecosystems.</span>
           </h2>
-          <p className="text-xl text-gray-600 font-light leading-relaxed max-w-sm">
+          <p className="text-gray-700 font-sans text-lg md:text-xl leading-relaxed">
             We engineer world-class trade exhibitions and B2B platforms that accelerate industry growth and forge international partnerships.
           </p>
         </div>
 
-        {/* Manually Scrollable Horizontal Track */}
-        <div className="w-full lg:w-[65%] relative">
-          
-          {/* Elegant Gradient Layout Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-[200vw] h-[2px] bg-gradient-to-r from-transparent via-gray-300 to-transparent -translate-y-1/2 z-0 pointer-events-none" />
+        {/* Right Column (The Animation Stage - 55% width) */}
+        <div 
+          className="w-full lg:w-[55%] relative h-[600px] flex items-center justify-center cursor-pointer" 
+          ref={containerRef}
+          onClick={handleStageClick}
+        >
+          {/* Shared Positioning Container for the Z-Index Sandwich */}
+          <div className="relative w-[360px] h-[240px] flex items-center justify-center">
+            
+            {/* LAYER 1 (Z-0): ENVELOPE BACK */}
+            <motion.div
+              initial={{ y: 0, opacity: 1 }}
+              animate={isInView ? { y: 200, opacity: 0, display: "none" } : {}}
+              transition={{ y: { duration: 0.5, delay: 1.4 }, opacity: { duration: 0.5, delay: 1.4 }, display: { delay: 1.9 } }}
+              className="absolute inset-0 z-0 bg-[#0A1931] rounded-2xl shadow-xl flex items-center justify-center pointer-events-none"
+            >
+              <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#ffffff 2px, transparent 2px)', backgroundSize: '16px 16px' }} />
+            </motion.div>
 
-          {/* Scroll Container */}
-          <div 
-            className="flex gap-8 lg:gap-12 px-8 lg:px-12 pb-16 pt-8 overflow-x-auto snap-x snap-mandatory no-scrollbar relative z-10 w-full"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {expertiseCards.map((card) => (
-              <motion.div 
-                key={card.id}
-                whileHover={{ y: -12, scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="bg-white/60 lg:bg-white/40 backdrop-blur-2xl border border-white/60 shadow-xl lg:shadow-[0_20px_50px_rgba(0,0,0,0.05)] rounded-[2.5rem] p-8 lg:p-10 shrink-0 w-[85vw] md:w-[400px] lg:w-[460px] min-h-[460px] lg:h-[520px] flex flex-col justify-between cursor-pointer relative group transition-colors duration-300 hover:bg-white snap-center"
+            {/* LAYER 2 (Z-10): THE CARDS */}
+            <div className="absolute z-10 inset-0 flex items-center justify-center">
+              
+              {/* Card 1 (B2B Networking - Left) */}
+              <motion.div
+                initial={{ y: 60, x: 0, scale: 0.35, opacity: 0, rotate: 0 }}
+                animate={
+                  activeCard === 1 ? { y: -40, x: 0, scale: 1.15, rotate: 0, zIndex: 100, opacity: 1 } :
+                  (isSettled ? { y: -50, x: -180, scale: 1, rotate: -12, zIndex: 30, opacity: activeCard !== null ? 0.4 : 1 } :
+                  (isInView ? { 
+                    y: [60, -250, -250, -50], 
+                    x: [0, 0, 0, -180], 
+                    rotate: [0, 0, 0, -12],
+                    scale: [0.35, 0.35, 0.35, 1],
+                    opacity: [0, 1, 1, 1] 
+                  } : {}))
+                }
+                transition={isSettled ? { type: "spring", bounce: 0.3, duration: 0.6 } : { duration: 2.2, delay: 0.6, times: [0, 0.3, 0.6, 1], ease: "easeInOut" }}
+                onAnimationComplete={() => setIsSettled(true)}
+                onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 1 ? null : 1); }}
+                className="absolute origin-center z-30"
               >
-                {/* Top Zone: Animated SVG Logo inside Soft Gold Squircle */}
-                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-3xl bg-gradient-to-br from-[#D4AF37]/10 to-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] p-4 lg:p-5 shadow-inner border border-[#D4AF37]/20">
-                  {card.renderIcon()}
-                </div>
-                
-                {/* Middle Zone: Rich Editorial Typography */}
-                <div className="mt-8 mb-auto">
-                  <h3 className="text-2xl lg:text-3xl font-bold text-[#0A1931] mb-4 tracking-tight">
-                    {card.title}
-                  </h3>
-                  <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light">
-                    {card.desc}
-                  </p>
-                </div>
-
-                {/* Bottom Zone: Premium Feature Badges */}
-                <div className="flex items-center gap-2 lg:gap-3 mt-8 flex-wrap">
-                  {card.tags.map((tag, i) => (
-                    <span key={i} className="px-3 lg:px-4 py-1.5 lg:py-2 bg-white/50 backdrop-blur-md border border-gray-200/50 rounded-full text-xs lg:text-sm font-semibold text-[#0A1931] tracking-wide shadow-sm group-hover:bg-white transition-colors duration-300">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <motion.div 
+                  whileHover={activeCard === null ? { y: -20, scale: 1.05, zIndex: 60 } : {}}
+                  className={`w-[300px] h-[400px] bg-white/70 backdrop-blur-2xl border-[1.5px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.12)] rounded-3xl p-8 flex flex-col justify-between cursor-pointer pointer-events-auto transition-all ${activeCard === 1 ? 'shadow-[0_40px_80px_rgba(10,25,49,0.2)] bg-white/90' : ''}`}
+                >
+                  <div className="w-14 h-14 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] mb-6">
+                    <Globe size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-[#0A1931] mb-4 tracking-tight" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>B2B Networking</h3>
+                    <p className="text-gray-600 font-light leading-relaxed text-[15px]">Curated business connections tailored to scale your reach globally across diverse emerging markets.</p>
+                  </div>
+                </motion.div>
               </motion.div>
-            ))}
+
+              {/* Card 2 (World-Class Events - Center) */}
+              <motion.div
+                initial={{ y: 60, x: 0, scale: 0.35, opacity: 0, rotate: 0 }}
+                animate={
+                  activeCard === 2 ? { y: -40, x: 0, scale: 1.15, rotate: 0, zIndex: 100, opacity: 1 } :
+                  (isSettled ? { y: -80, x: 0, scale: 1, rotate: 0, zIndex: 40, opacity: activeCard !== null ? 0.4 : 1 } :
+                  (isInView ? { 
+                    y: [60, -250, -250, -80], 
+                    x: [0, 0, 0, 0], 
+                    rotate: [0, 0, 0, 0],
+                    scale: [0.35, 0.35, 0.35, 1],
+                    opacity: [0, 1, 1, 1] 
+                  } : {}))
+                }
+                transition={isSettled ? { type: "spring", bounce: 0.3, duration: 0.6 } : { duration: 2.2, delay: 0.6, times: [0, 0.3, 0.6, 1], ease: "easeInOut" }}
+                onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 2 ? null : 2); }}
+                className="absolute origin-center z-40"
+              >
+                <motion.div 
+                  whileHover={activeCard === null ? { y: -20, scale: 1.05, zIndex: 60 } : {}}
+                  className={`w-[300px] h-[400px] bg-white/80 backdrop-blur-2xl border-[1.5px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.12)] rounded-3xl p-8 flex flex-col justify-between cursor-pointer pointer-events-auto relative overflow-hidden transition-all ${activeCard === 2 ? 'shadow-[0_40px_80px_rgba(10,25,49,0.2)] bg-white/95' : ''}`}
+                >
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/20 blur-3xl rounded-full pointer-events-none" />
+                  <div className="w-14 h-14 bg-[#0A1931] rounded-2xl flex items-center justify-center text-white mb-6 relative z-10">
+                    <Briefcase size={32} />
+                  </div>
+                  <div className="relative z-10">
+                    <h3 className="text-3xl font-bold text-[#0A1931] mb-4 tracking-tight" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>World-Class Events</h3>
+                    <p className="text-gray-600 font-light leading-relaxed text-[15px]">Premium industry conferences and flawless on-site event execution designed to leave a lasting impact.</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Card 3 (Market Expansion - Right) */}
+              <motion.div
+                initial={{ y: 60, x: 0, scale: 0.35, opacity: 0, rotate: 0 }}
+                animate={
+                  activeCard === 3 ? { y: -40, x: 0, scale: 1.15, rotate: 0, zIndex: 100, opacity: 1 } :
+                  (isSettled ? { y: -50, x: 180, scale: 1, rotate: 12, zIndex: 50, opacity: activeCard !== null ? 0.4 : 1 } :
+                  (isInView ? { 
+                    y: [60, -250, -250, -50], 
+                    x: [0, 0, 0, 180], 
+                    rotate: [0, 0, 0, 12],
+                    scale: [0.35, 0.35, 0.35, 1],
+                    opacity: [0, 1, 1, 1] 
+                  } : {}))
+                }
+                transition={isSettled ? { type: "spring", bounce: 0.3, duration: 0.6 } : { duration: 2.2, delay: 0.6, times: [0, 0.3, 0.6, 1], ease: "easeInOut" }}
+                onClick={(e) => { e.stopPropagation(); setActiveCard(activeCard === 3 ? null : 3); }}
+                className="absolute origin-center z-50"
+              >
+                <motion.div 
+                  whileHover={activeCard === null ? { y: -20, scale: 1.05, zIndex: 60 } : {}}
+                  className={`w-[300px] h-[400px] bg-white/70 backdrop-blur-2xl border-[1.5px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.12)] rounded-3xl p-8 flex flex-col justify-between cursor-pointer pointer-events-auto transition-all ${activeCard === 3 ? 'shadow-[0_40px_80px_rgba(10,25,49,0.2)] bg-white/90' : ''}`}
+                >
+                  <div className="w-14 h-14 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center text-[#D4AF37] mb-6">
+                    <Zap size={32} />
+                  </div>
+                  <div>
+                    <h3 className="text-3xl font-bold text-[#0A1931] mb-4 tracking-tight" style={{ fontFamily: '"Playfair Display", Georgia, serif' }}>Market Expansion</h3>
+                    <p className="text-gray-600 font-light leading-relaxed text-[15px]">Bridging local innovators with global stakeholders to seamlessly scale your business ecosystem.</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* LAYER 3 (Z-20): ENVELOPE FRONT & FLAP */}
+            <motion.div
+              initial={{ y: 0, opacity: 1 }}
+              animate={isInView ? { y: 200, opacity: 0, display: "none" } : {}}
+              transition={{ y: { duration: 0.5, delay: 1.4 }, opacity: { duration: 0.5, delay: 1.4 }, display: { delay: 1.9 } }}
+              className="absolute inset-0 z-20 flex flex-col justify-end pointer-events-none"
+            >
+              {/* The Flap (Top 80px) */}
+              <div className="relative w-full h-[80px]">
+                <motion.div
+                  initial={{ rotateX: 0 }}
+                  animate={isInView ? { rotateX: 180 } : {}}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  style={{ originY: 1 }} // Flips downwards over the front pocket!
+                  className="absolute bottom-0 left-0 w-full h-full bg-gradient-to-b from-[#F0D060] to-[#D4AF37]"
+                  style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)', originY: 1 }}
+                />
+              </div>
+
+              {/* The Front Pocket (Bottom 160px) */}
+              <div className="w-full h-[160px] bg-gradient-to-br from-[#1e3a68] to-[#0A1931] rounded-b-2xl shadow-[0_-5px_15px_rgba(0,0,0,0.1)] relative">
+                {/* Decorative Gold Rim */}
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-[#D4AF37]" />
+              </div>
+            </motion.div>
+
           </div>
         </div>
-
       </div>
     </section>
   );

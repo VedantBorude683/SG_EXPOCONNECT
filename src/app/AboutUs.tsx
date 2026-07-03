@@ -22,18 +22,28 @@ export default function AboutUs() {
       </div>
 
       {/* Anti-Gravity Hero Section */}
-      <AntiGravityHero />
+      <div className="relative z-10">
+        <AntiGravityHero />
+      </div>
 
-      {/* Cinematic Story Reveal */}
-      <OurStory />
+      {/* Section 1: Cinematic Story Reveal (The Staggered Entrance) */}
+      <div className="relative z-10 pt-16">
+        <OurStory />
+      </div>
 
-      {/* 3D Scrolling Expertise & Mission Section */}
-      <OurExpertise />
+      {/* Section 2: 3D Scrolling Expertise (The Smooth Handoff) */}
+      <div className="relative z-10 pt-32">
+        <OurExpertise />
+      </div>
 
-      {/* Our Mission Section */}
-      <OurMission />
+      {/* Section 3: Our Mission (The Grand Finale) */}
+      <div className="relative z-10 pt-32 pb-16">
+        <OurMission />
+      </div>
 
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </main>
   );
 }

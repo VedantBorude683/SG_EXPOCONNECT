@@ -1,165 +1,204 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { Briefcase } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'motion/react';
+import { Target, ArrowRight } from 'lucide-react';
+
+const carouselData = [
+  {
+    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1974&auto=format&fit=crop",
+    title: "Lasting Partnerships",
+    text: "Inspiring strategic alliances and sustainable growth across diverse global markets."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop",
+    title: "World-Class Platforms",
+    text: "Dedicated to creating impactful business platforms that elevate global trade and local innovation."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
+    title: "Our Mission",
+    text: "To connect businesses, create opportunities, and drive industry advancement through meaningful, large-scale events."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop",
+    title: "Industry Advancement",
+    text: "Fostering thought leadership and driving forward-thinking, industry-defining conversations at scale."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=2070&auto=format&fit=crop",
+    title: "Professional Execution",
+    text: "A professional exhibition and conference management company delivering flawless, turnkey event solutions."
+  }
+];
 
 export default function OurMission() {
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.8,
-      }
+  const [introDone, setIntroDone] = useState(false);
+  const [hasTriggered, setHasTriggered] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(2); // Start with middle image
+  
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (isInView && !hasTriggered) {
+      setHasTriggered(true);
+      // Timeline:
+      // 0.0s: Target scales in
+      // 0.6s: Arrow shoots in
+      // 1.1s: Arrow hits -> Ripple explodes
+      // 2.2s: Intro dissolves -> UI orchestrates in
+      setTimeout(() => {
+        setIntroDone(true);
+      }, 2200);
     }
+  }, [isInView, hasTriggered]);
+  
+  // Autoplay the carousel every 2 seconds, BUT only after intro is done
+  useEffect(() => {
+    if (!introDone) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % carouselData.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, [introDone]);
+
+  // Math for the Curved Carousel (Rolodex / Fan effect)
+  const getCardStyle = (index: number) => {
+    const offset = index - activeIndex;
+    const absOffset = Math.abs(offset);
+    
+    return {
+      rotate: offset * 12,
+      y: absOffset === 0 ? 0 : absOffset === 1 ? 50 : 120,
+      scale: absOffset === 0 ? 1.1 : absOffset === 1 ? 0.9 : 0.8,
+      zIndex: 50 - absOffset * 10,
+      x: offset * 220, 
+      opacity: absOffset > 2 ? 0 : 1,
+    };
   };
-
-  const lineVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.6, ease: "easeOut" } 
-    }
-  };
-
-  const textLines1 = [
-    "From concept development and strategic planning to",
-    "marketing, sponsorship acquisition, and seamless",
-    "on-site execution, we deliver comprehensive",
-    "end-to-end event management solutions."
-  ];
-
-  const textLines2 = [
-    "Our mission is to connect businesses, unlock new",
-    "opportunities, and accelerate industry growth by",
-    "creating meaningful platforms that foster innovation,",
-    "strategic partnerships, knowledge exchange,",
-    "and sustainable progress."
-  ];
 
   return (
-    <section className="relative w-full bg-[#FDFCF8] py-24 md:py-32 px-6 lg:px-12 overflow-hidden z-10">
-      <div className="max-w-7xl mx-auto">
-        <motion.div 
-          className="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          
-          {/* Right Column: Visuals (50%) */}
-          <div className="lg:w-1/2 w-full relative flex justify-center mt-12 lg:mt-0">
-            {/* The Aurora Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#B87333]/20 blur-3xl rounded-full z-0 pointer-events-none" />
-
-            <div className="relative w-full h-[500px] md:h-[600px] lg:h-[550px] z-10 mx-auto max-w-md lg:max-w-none">
+    <section 
+      ref={containerRef}
+      className="relative w-full min-h-screen bg-transparent overflow-hidden flex flex-col pb-24"
+    >
+      
+      {/* PHASE 1: The Orchestrated "Mission Target" Intro */}
+      <AnimatePresence>
+        {!introDone && (
+          <motion.div 
+            className="absolute inset-0 z-[100] bg-transparent flex items-center justify-center overflow-hidden"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            <div className="relative flex items-center justify-center">
               
-              {/* Image 1: Main Image */}
-              <motion.img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
-                alt="Team Collaboration"
-                className="absolute right-0 top-10 w-[75%] h-[80%] object-cover rounded-[2rem] shadow-xl z-10"
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              />
-
-              {/* Image 2: Top Overlap */}
-              <motion.img 
-                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-                alt="Strategic Planning"
-                className="absolute left-0 top-0 w-[50%] h-[45%] md:w-[45%] md:h-[40%] object-cover rounded-2xl shadow-2xl z-20 border-[6px] border-[#FDFCF8] cursor-pointer"
-                initial={{ y: -30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              />
-
-              {/* Image 3: Bottom Overlap */}
-              <motion.img 
-                src="https://images.unsplash.com/photo-1557425955-df376b5903c8?q=80&w=2070&auto=format&fit=crop"
-                alt="Business Growth"
-                className="absolute -left-4 bottom-12 w-[60%] h-[35%] md:w-[55%] object-cover rounded-2xl shadow-2xl z-30 border-[6px] border-[#FDFCF8] cursor-pointer"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              />
-
-              {/* The Glassmorphism Card */}
+              {/* 1. Target rotates and scales in */}
               <motion.div 
-                className="absolute -right-4 md:-right-8 bottom-0 z-[50] w-56 md:w-64 bg-white/70 backdrop-blur-2xl border border-white/50 shadow-2xl rounded-3xl p-6 hidden sm:block"
-                initial={{ x: -50, opacity: 0 }}
-                whileInView={{ x: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1.0 }} 
+                className="text-[#D4AF37] relative z-20"
+                initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                transition={{ duration: 1, type: "spring", bounce: 0.4 }}
               >
-                <Briefcase className="text-[#B87333] w-10 h-10 mb-4 drop-shadow-sm" />
-                <h4 className="font-bold text-xl mb-2 text-[#0A1931] tracking-tight">End-to-End</h4>
-                <p className="text-gray-600 text-sm leading-relaxed font-medium">Delivering comprehensive event management solutions.</p>
+                <Target size={140} strokeWidth={1} />
               </motion.div>
-
-              {/* The Spinning Badge */}
-              <div className="absolute left-4 md:left-10 -top-8 z-[40] w-28 h-28 md:w-32 md:h-32 animate-[spin_10s_linear_infinite]">
-                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg text-[#0A1931]">
-                  <path id="circlePath2" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
-                  <text className="text-[12px] font-bold tracking-[0.25em] uppercase" fill="currentColor">
-                    <textPath href="#circlePath2" startOffset="0%">
-                      OUR MISSION • INNOVATION • OUR MISSION •
-                    </textPath>
-                  </text>
-                  <polygon points="50,38 53,46 62,46 55,51 58,60 50,55 42,60 45,51 38,46 47,46" fill="#B87333" />
-                </svg>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Left Column: The Story Reveal (50%) */}
-          <div className="lg:w-1/2 flex flex-col justify-center text-left pr-0 lg:pr-8 mt-16 lg:mt-0">
-            {/* Elegant Vertical Grounding Line */}
-            <div className="border-l-[3px] border-gray-300 pl-6 md:pl-8 py-2">
-              <motion.h2 
-                initial={{ y: 20, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-serif text-[#0A1931] mb-10 tracking-tight leading-tight"
-                style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
-              >
-                Our Mission
-              </motion.h2>
               
-              {/* Staggered Line-by-Line Reveal */}
-              <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-                <div className="mb-8">
-                  {textLines1.map((line, index) => (
-                    <div key={`p1-${index}`} className="overflow-hidden">
-                      <motion.p variants={lineVariants} className="text-lg md:text-xl text-gray-600 font-light leading-relaxed block">
-                        {line}
-                      </motion.p>
-                    </div>
-                  ))}
-                </div>
-                
-                <div>
-                  {textLines2.map((line, index) => (
-                    <div key={`p2-${index}`} className="overflow-hidden">
-                      <motion.p variants={lineVariants} className="text-lg md:text-xl text-gray-600 font-light leading-relaxed block">
-                        {line}
-                      </motion.p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
+              <motion.div 
+                className="absolute w-3 h-3 bg-[#D4AF37] rounded-full z-20"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.4, duration: 0.3 }}
+              />
 
-        </motion.div>
+              {/* 2. Arrow shoots in at extreme speed */}
+              {hasTriggered && (
+                <motion.div 
+                  className="absolute z-30 text-[#0A1931] flex items-center"
+                  initial={{ x: "-100vw", opacity: 1 }}
+                  animate={{ x: "-30px", opacity: 0 }} 
+                  transition={{ duration: 0.5, delay: 0.6, ease: "easeIn" }}
+                >
+                  <ArrowRight size={80} strokeWidth={1.5} className="text-[#0A1931]" />
+                </motion.div>
+              )}
+
+              {/* 3. Golden Shockwave Ripple on Impact */}
+              {hasTriggered && (
+                <motion.div 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D4AF37] z-10"
+                  initial={{ width: 0, height: 0, opacity: 1, borderWidth: "50px" }}
+                  animate={{ width: "300vw", height: "300vw", opacity: 0, borderWidth: "1px" }}
+                  transition={{ duration: 1.2, delay: 1.1, ease: "easeOut" }}
+                />
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* PHASE 2 & 3: The Interactive Curved Carousel & Content Reveal */}
+      <div className="relative w-full min-h-[500px] md:min-h-[600px] flex items-center justify-center pt-24 md:pt-32 shrink-0 z-10">
+        
+        {/* The Carousel Track */}
+        <div className="relative flex items-center justify-center w-full max-w-7xl mx-auto">
+          {carouselData.map((card, index) => {
+            const style = getCardStyle(index);
+            const isMobileHidden = Math.abs(index - activeIndex) > 1 ? "hidden md:block" : "block";
+
+            return (
+              <motion.div
+                key={index}
+                className={`absolute w-[260px] h-[340px] md:w-[320px] md:h-[420px] lg:w-[360px] lg:h-[480px] rounded-3xl border-[6px] border-[#FDFCF8] shadow-[0_30px_60px_rgba(0,0,0,0.15)] cursor-pointer overflow-hidden ${isMobileHidden}`}
+                // The Cinematic Fan-Out Reveal: Cards start stacked at 0, then spring out to their calculated positions
+                initial={{ x: 0, y: 0, rotate: 0, scale: 0.8, opacity: 0 }}
+                animate={introDone ? style : { x: 0, y: 0, rotate: 0, scale: 0.8, opacity: 0 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 260, 
+                  damping: 25, 
+                  // Stagger the fanning out effect from the center
+                  delay: introDone ? 0.2 + (Math.abs(index - 2) * 0.1) : 0 
+                }}
+                onClick={() => setActiveIndex(index)}
+                whileHover={{ scale: style.scale === 1.1 ? 1.12 : style.scale + 0.05 }}
+              >
+                <img 
+                  src={card.image} 
+                  alt={card.title} 
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                />
+                
+                <motion.div 
+                  className="absolute inset-0 bg-black pointer-events-none"
+                  animate={{ opacity: index === activeIndex ? 0 : 0.4 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
+
+      {/* PHASE 3: Premium Editorial Typography Block Reveal */}
+      <motion.div 
+        className="relative w-full flex-1 flex flex-col items-center justify-start pt-12 md:pt-16 z-50"
+        initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
+        animate={introDone ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 50, filter: "blur(10px)" }}
+        transition={{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }} // Arrives right after the cards fan out
+      >
+        <div className="max-w-4xl px-6 md:px-12 w-full flex flex-col items-start text-left">
+          <h2 
+            className="text-6xl md:text-7xl lg:text-[6rem] font-serif text-[#0A1931] leading-[1.05] mb-6 tracking-tight"
+            style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
+          >
+            Our <br className="hidden md:block" />
+            <span className="text-[#D4AF37] italic pr-4">Mission.</span>
+          </h2>
+          <p className="text-lg md:text-[1.35rem] text-gray-600 leading-[1.8] font-sans max-w-3xl">
+            Our mission is to connect businesses, create opportunities, and drive industry advancement through meaningful events that inspire innovation, partnerships, and sustainable growth.
+          </p>
+        </div>
+      </motion.div>
+
     </section>
   );
 }
