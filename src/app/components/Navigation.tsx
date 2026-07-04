@@ -18,15 +18,14 @@ export default function Navigation({ delay = 0 }) {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-        isScrolled 
-          ? 'bg-[#FDFCF8]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3' 
-          : 'bg-transparent py-8'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-700 ${isScrolled
+        ? 'bg-[#FDFCF8]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3'
+        : 'bg-transparent py-8'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
         <Link to="/" className="text-3xl font-black text-[#0A1931] tracking-tighter">
-          SG<span className="text-[#D4AF37] font-light">Expo</span>
+          SG<span className="text-[#D4AF37] font-light">ExpoConnect</span>
         </Link>
 
         <ul className="hidden lg:flex items-center gap-8">
@@ -40,8 +39,8 @@ export default function Navigation({ delay = 0 }) {
             const isActive = location.pathname === item.path;
             return (
               <li key={item.name}>
-                <Link 
-                  to={item.path} 
+                <Link
+                  to={item.path}
                   className={`text-sm font-semibold tracking-wide transition-colors relative group uppercase ${isActive ? 'text-[#0A1931]' : 'text-gray-500 hover:text-[#0A1931]'}`}
                 >
                   {item.name}

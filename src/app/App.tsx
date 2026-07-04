@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Globe, Briefcase, Users, Zap, ArrowRight, Play, ArrowUpRight, Mail } from 'lucide-react';
 import { Link } from 'react-router';
-import introVideo from '../imports/intro-video.mp4';
+import heroVideo from '../assets/mainvideo.mov';
 import PremiumGallery from './components/PremiumGallery';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -89,7 +89,6 @@ export default function App() {
   const heroY = useTransform(scrollYProgress, [0, 0.25], [0, 80]);
 
   const [isScrolled, setIsScrolled] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -131,7 +130,7 @@ export default function App() {
           <div className="w-16 h-16 rounded-full border border-white/20 border-t-[#D4AF37] animate-spin" />
           <div className="text-white text-3xl font-black tracking-widest uppercase flex gap-2 overflow-hidden">
             <motion.span initial={{ y: 40 }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>SG</motion.span>
-            <motion.span initial={{ y: 40 }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="text-[#D4AF37] font-light">Expo</motion.span>
+            <motion.span initial={{ y: 40 }} animate={{ y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="text-[#D4AF37] font-light">ExpoConnect</motion.span>
           </div>
         </motion.div>
       </motion.div>
@@ -165,160 +164,28 @@ export default function App() {
 
       {/* --- SMART GLASS NAVIGATION --- */}
       
-      {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex items-center pt-24 z-10 max-w-7xl mx-auto px-8">
-        <motion.div className="flex flex-col lg:flex-row items-center justify-between gap-16 w-full -mt-16 md:-mt-32 lg:-mt-24" style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}>
-
-          {/* Left Side: Sequenced Content */}
-          <div className="flex-1 flex flex-col items-start w-full relative z-20">
-            <div className="relative w-full">
-
-              <div className="relative leading-[0.9] mb-12 z-10">
-                <motion.div
-                  initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tTitle1 }}
-                  className="flex items-center text-[clamp(4.5rem,8vw,8rem)] font-black whitespace-nowrap"
-                  style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
-                >
-                  {/* True 3D Container for perfect orbital intersection */}
-                  <div className="relative inline-flex items-center justify-center mr-6 pr-2" style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}>
-
-                    {/* The Text (Elevated in 3D space, Clipped & Merged S and G) */}
-                    <div style={{ transform: 'translateZ(10px)', transformStyle: 'preserve-3d' }} className="relative z-10 flex items-center">
-                      <span
-                        className="text-[#1a365d] z-20"
-                        style={{
-                          transform: 'scaleX(1.15)',
-                          textShadow: '1px 1px 0 #0f2139, 2px 2px 0 #0b182a, 3px 3px 0 #060c15, 4px 4px 10px rgba(0,0,0,0.4)'
-                        }}
-                      >
-                        S
-                      </span>
-                      {/* Clip the left part of G so it fits perfectly behind the S */}
-                      <span
-                        className="text-[#D4AF37] z-10 -ml-[0.35em]"
-                        style={{
-                          transform: 'scaleX(1.15)',
-                          clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 30% 100%)',
-                          textShadow: '1px 1px 0 #a38528, 2px 2px 0 #856a1e, 3px 3px 0 #614d15, 4px 4px 10px rgba(0,0,0,0.4)'
-                        }}
-                      >
-                        G
-                      </span>
-                    </div>
-
-                    {/* The 3D Orbit Ring (More Compact) */}
-                    <div
-                      className="absolute pointer-events-none"
-                      style={{
-                        // 🔹 CHANGE THESE VALUES to adjust the size of the ring (e.g. 180%, 200%, 220%)
-                        width: '150%', height: '150%',
-                        // 🔹 CHANGE 'rotateX' to adjust how flat the ring lies (e.g. 70deg is rounder, 85deg is flatter)
-                        transform: 'translateZ(0px) rotateZ(-30deg) rotateX(78deg)',
-                        transformStyle: 'preserve-3d'
-                      }}
-                    >
-                      <motion.div
-                        className="w-full h-full rounded-full border-[clamp(6px,0.8vw,12px)] border-[#F0D060] opacity-90 shadow-[0_0_20px_rgba(212,175,55,0.5)]"
-                        style={{ transformStyle: 'preserve-3d', borderTopColor: '#F0D060', borderBottomColor: '#F0D060' }}
-                        animate={{ rotateZ: [0, 360] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-                      >
-                        {/* Moving Glowing Dot on the ring */}
-                        <div
-                          className="absolute top-0 left-1/2 w-[clamp(12px,1.5vw,20px)] h-[clamp(12px,1.5vw,20px)] bg-white rounded-full shadow-[0_0_30px_8px_#D4AF37]"
-                          style={{ transform: 'translate(-50%, -50%) rotateX(-80deg)' }}
-                        />
-                      </motion.div>
-                    </div>
-
-                  </div>
-                  <span
-                    className="text-[#1a365d] tracking-[0.2em] inline-block ml-2"
-                    style={{
-                      transform: 'scaleX(1.15)',
-                      textShadow: '1px 1px 0 #0f2139, 2px 2px 0 #0b182a, 3px 3px 0 #060c15, 4px 4px 10px rgba(0,0,0,0.4)'
-                    }}
-                  >
-                    Expo
-                  </span>
-                </motion.div>
-                <motion.span
-                  initial={{ clipPath: 'inset(0 100% 0 0)' }}
-                  animate={{ clipPath: 'inset(0 0% 0 0)' }}
-                  transition={{ duration: 1.5, ease: 'easeOut', delay: tTitle2 }}
-                  className="absolute top-[35%] left-[22%] -rotate-[6deg] font-['Caveat'] text-[clamp(5.5rem,10vw,9rem)] text-[#D4AF37] drop-shadow-[0_15px_30px_rgba(212,175,55,0.25)] pointer-events-none tracking-normal"
-                >
-                  connect
-                </motion.span>
-              </div>
-
-              <motion.p
-                initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tDesc }}
-                className="text-xl md:text-2xl text-gray-600 font-light leading-relaxed max-w-xl mb-14"
-              >
-                Forging <strong className="font-semibold text-[#0A1931]">Business Empires</strong>. <br />
-                Uniting <strong className="font-semibold text-[#0A1931]">Global Visionaries</strong>.
-              </motion.p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: tButtons, duration: 1, ease: "easeOut" }}
-              className="flex items-center gap-8"
-            >
-              <motion.button
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                className="group flex items-center gap-4 px-10 py-5 bg-[#0A1931] text-white rounded-full text-lg font-medium shadow-[0_20px_40px_rgba(10,25,49,0.15)] hover:shadow-[0_25px_50px_rgba(10,25,49,0.25)] transition-all duration-500"
-              >
-                Discover Excellence
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 group-hover:translate-x-2 transition-all duration-500">
-                  <ArrowRight size={20} />
-                </div>
-              </motion.button>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                className="group flex items-center gap-4 text-[#0A1931] font-semibold hover:text-[#D4AF37] transition-colors"
-              >
-                <div className="w-16 h-16 rounded-full border border-gray-300 flex items-center justify-center group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-sm group-hover:shadow-md" style={{ backdropFilter: 'blur(4px)' }}>
-                  <Play size={20} className="ml-1 text-[#D4AF37]" fill="currentColor" />
-                </div>
-                <span>Play Showreel</span>
-              </motion.button>
-            </motion.div>
-          </div>
-
-          {/* Right Side: The Masterpiece Video Sequence */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 z-10 w-full overflow-hidden bg-white">
+        <motion.div 
+          className="w-full relative flex flex-col items-center" 
+          style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
+        >
+          {/* Full-width Video Container */}
           <motion.div
-            className="flex-1 w-full max-w-[750px] aspect-square relative z-10 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8, filter: 'blur(30px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 2, delay: tVideo, ease: [0.16, 1, 0.3, 1] }}
+            initial="hidden" animate="visible" variants={fadeUpSequence} transition={{ delay: tTitle1 }}
+            className="w-full relative flex justify-center items-center overflow-hidden"
           >
-            {/* Soft backdrop glow to anchor the video */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/10 to-[#0A1931]/5 rounded-full blur-[80px] -z-10 animate-pulse" style={{ animationDuration: '4s' }} />
-
-            <motion.div
-              className="w-full h-full relative"
-              animate={{ y: [-15, 15, -15] }}
-              transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-            >
-              <video
-                ref={videoRef}
-                src={introVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover mix-blend-multiply opacity-95"
-                style={{
-                  /* Pushes contrast to ensure backgrounds dissolve entirely when multiplied */
-                  filter: 'contrast(1.1) brightness(1.05) grayscale(0.1)',
-                  /* Ultimate feathering mask: zero sharp edges, pure seamless blend */
-                  maskImage: 'radial-gradient(circle at center, black 35%, transparent 75%)',
-                  WebkitMaskImage: 'radial-gradient(circle at center, black 35%, transparent 75%)',
-                }}
-              />
-            </motion.div>
+            <video
+              src={heroVideo}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto object-cover md:object-contain scale-[1.05]"
+              style={{
+                maxHeight: '75vh',
+                clipPath: 'inset(0 15%)'
+              }}
+            />
           </motion.div>
         </motion.div>
       </section>

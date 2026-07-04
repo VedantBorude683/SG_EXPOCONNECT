@@ -25,7 +25,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
   // Mouse tilt effect for the active card
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  
+
   // Smooth out mouse values
   const smoothMouseX = useSpring(mouseX, { damping: 20, stiffness: 150, mass: 0.5 });
   const smoothMouseY = useSpring(mouseY, { damping: 20, stiffness: 150, mass: 0.5 });
@@ -33,7 +33,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
   // Map mouse values to rotations (-15deg to 15deg)
   const rotateX = useTransform(smoothMouseY, [-1, 1], [15, -15]);
   const rotateY = useTransform(smoothMouseX, [-1, 1], [-15, 15]);
-  
+
   // Map mouse values to glossy glare
   const glareX = useTransform(smoothMouseX, [-1, 1], [100, 0]);
   const glareY = useTransform(smoothMouseY, [-1, 1], [100, 0]);
@@ -70,7 +70,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     // Normalize coordinates from -1 to 1 based on center of card
     const normalizedX = (x / rect.width) * 2 - 1;
     const normalizedY = (y / rect.height) * 2 - 1;
@@ -91,19 +91,17 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
     <section className="relative w-full py-16 md:py-20 overflow-hidden z-20 font-sans">
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10 flex flex-col items-center">
-        
+
         {/* Title */}
         <div className="text-center mb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm mb-4">
             Curated Experiences
           </motion.div>
-          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-4xl md:text-5xl font-black text-[#0A1931] tracking-tight">
-            Premium <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#B87333]">Gallery</span>
-          </motion.h2>
+
         </div>
 
         {/* 3D Floating Cards Container */}
-        <div 
+        <div
           className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center perspective-[1500px]"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={handleMouseLeave}
@@ -119,7 +117,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
               const scale = 1 - (Math.abs(offset) * 0.1); // shrink
               const rotation = offset * -15; // slight inward turn
               const opacity = Math.max(0, 1 - (Math.abs(offset) * 0.35)); // fade out gently
-              
+
               return (
                 <motion.div
                   key={index}
@@ -153,7 +151,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
                   }}
                 >
                   {/* Image Background */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${image.url})` }}
                     animate={{ scale: isActive ? 1.05 : 1 }} // Internal parallax
@@ -166,7 +164,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
 
                   {/* Glossy Glare Reflection (Only on active) */}
                   {isActive && (
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0 pointer-events-none mix-blend-overlay"
                       style={{
                         background: useTransform(
@@ -192,7 +190,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
                             <span className="w-8 h-[1px] bg-[#D4AF37] block" />
                             {(index + 1).toString().padStart(2, '0')} / {images.length.toString().padStart(2, '0')}
                           </div>
-                          
+
                           {image.title && (
                             <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-4 text-white drop-shadow-xl">
                               {image.title}
@@ -218,13 +216,13 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
 
         {/* Custom Navigation */}
         <div className="flex gap-6 mt-12 z-20">
-          <button 
+          <button
             onClick={() => paginate(-1)}
             className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center bg-transparent hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 text-[#0A1931]"
           >
             <ArrowLeft size={20} />
           </button>
-          <button 
+          <button
             onClick={() => paginate(1)}
             className="w-14 h-14 rounded-full border border-gray-300 flex items-center justify-center bg-transparent hover:bg-[#D4AF37]/10 hover:border-[#D4AF37] hover:text-[#D4AF37] transition-all duration-300 text-[#0A1931]"
           >
@@ -232,7 +230,7 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
           </button>
         </div>
       </div>
-      
+
       <style dangerouslySetInnerHTML={{
         __html: `
           .perspective-\\[1500px\\] {

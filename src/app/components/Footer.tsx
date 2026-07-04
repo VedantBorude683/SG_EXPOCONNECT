@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-2">
             <h3 className="text-5xl font-black tracking-tighter mb-6">
-              SG<span className="text-[#D4AF37] font-light">Expo</span>
+              SG<span className="text-[#D4AF37] font-light">ExpoConnect</span>
             </h3>
             <p className="text-gray-400 text-xl max-w-md font-light leading-relaxed mb-10">
               Redefining global business connections through extraordinary exhibition experiences.

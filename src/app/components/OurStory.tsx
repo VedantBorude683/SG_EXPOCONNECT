@@ -103,20 +103,7 @@ export default function OurStory() {
                 <p className="text-gray-600 text-sm leading-relaxed font-medium">Connecting businesses across diverse sectors globally.</p>
               </motion.div>
 
-              {/* The Spinning Badge */}
-              <div className="absolute right-4 md:right-10 -top-8 z-[40] w-28 h-28 md:w-32 md:h-32 animate-[spin_10s_linear_infinite]">
-                <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg text-[#0A1931]">
-                  {/* Invisible path for text to follow */}
-                  <path id="circlePath" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="transparent" />
-                  <text className="text-[12px] font-bold tracking-[0.25em] uppercase" fill="currentColor">
-                    <textPath href="#circlePath" startOffset="0%">
-                      SG EXPO • GLOBAL IMPACT • SG EXPO •
-                    </textPath>
-                  </text>
-                  {/* Central Star/Crosshair inside the badge */}
-                  <polygon points="50,38 53,46 62,46 55,51 58,60 50,55 42,60 45,51 38,46 47,46" fill="#D4AF37" />
-                </svg>
-              </div>
+
 
             </div>
           </div>
