@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
+import heroVideo from '../../assets/mainvideo.mp4';
 
 export default function Navigation({ delay = 0 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,17 +16,25 @@ export default function Navigation({ delay = 0 }) {
 
   return (
     <motion.nav
-      initial={{ y: -100, opacity: 0 }}
+      initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
       className={`fixed top-0 w-full z-50 transition-all duration-700 ${isScrolled
-        ? 'bg-[#FDFCF8]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3'
+        ? 'bg-[#FCFAF5]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3'
         : 'bg-transparent py-8'
         }`}
     >
       <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <Link to="/" className="text-3xl font-black text-[#0A1931] tracking-tighter">
-          SG<span className="text-[#D4AF37] font-light">ExpoConnect</span>
+        <Link to="/" className="flex items-center justify-center h-20 w-64 relative -ml-30 overflow-hidden">
+          <video
+            src={heroVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-contain mix-blend-multiply scale-[1.3] origin-center"
+            style={{ filter: 'contrast(1.05)' }}
+          />
         </Link>
 
         <ul className="hidden lg:flex items-center gap-8">
@@ -44,7 +53,7 @@ export default function Navigation({ delay = 0 }) {
                   className={`text-sm font-semibold tracking-wide transition-colors relative group uppercase ${isActive ? 'text-[#0A1931]' : 'text-gray-500 hover:text-[#0A1931]'}`}
                 >
                   {item.name}
-                  <span className={`absolute -bottom-2 left-0 h-[2px] bg-[#D4AF37] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-2 left-0 h-[2px] bg-[#FCFAF5] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               </li>
             );

@@ -15,10 +15,10 @@ export default function OurStory() {
 
   const lineVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1, 
-      transition: { duration: 0.6, ease: "easeOut" } 
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   };
 
@@ -41,22 +41,22 @@ export default function OurStory() {
   return (
     <section className="relative w-full bg-transparent py-24 md:py-32 px-6 lg:px-12 overflow-hidden z-10">
       <div className="max-w-7xl mx-auto">
-        <motion.div 
+        <motion.div
           className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          
+
           {/* Left Column: Visuals (50%) - The Asymmetric Editorial Collage */}
           <div className="lg:w-1/2 w-full relative flex justify-center mt-12 lg:mt-0">
             {/* The Aurora Background Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#D4AF37]/20 blur-3xl rounded-full z-0 pointer-events-none" />
 
             <div className="relative w-full h-[500px] md:h-[600px] lg:h-[550px] z-10 mx-auto max-w-md lg:max-w-none">
-              
+
               {/* Image 1: The Anchor (Dark Theme) */}
-              <motion.img 
+              <motion.img
                 src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop"
                 alt="Global Exhibitions"
                 className="absolute left-0 top-10 w-[75%] h-[80%] object-cover rounded-[2rem] shadow-xl z-10"
@@ -67,7 +67,7 @@ export default function OurStory() {
               />
 
               {/* Image 2: Top Overlap (Bright Theme) */}
-              <motion.img 
+              <motion.img
                 src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop"
                 alt="Networking Event"
                 className="absolute right-0 top-0 w-[50%] h-[45%] md:w-[45%] md:h-[40%] object-cover rounded-2xl shadow-2xl z-20 border-[6px] border-[#FDFCF8] cursor-pointer"
@@ -79,7 +79,7 @@ export default function OurStory() {
               />
 
               {/* Image 3: Bottom Overlap (Wide Theme) */}
-              <motion.img 
+              <motion.img
                 src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1974&auto=format&fit=crop"
                 alt="Business Partnership"
                 className="absolute -right-4 bottom-12 w-[60%] h-[35%] md:w-[55%] object-cover rounded-2xl shadow-2xl z-30 border-[6px] border-[#FDFCF8] cursor-pointer"
@@ -91,12 +91,12 @@ export default function OurStory() {
               />
 
               {/* The Glassmorphism Card (z-[50] Overlap) */}
-              <motion.div 
+              <motion.div
                 className="absolute -left-4 md:-left-8 bottom-0 z-[50] w-56 md:w-64 bg-white/70 backdrop-blur-2xl border border-white/50 shadow-2xl rounded-3xl p-6 hidden sm:block"
                 initial={{ x: 50, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1.0 }} 
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1.0 }}
               >
                 <Globe className="text-[#D4AF37] w-10 h-10 mb-4 drop-shadow-sm" />
                 <h4 className="font-bold text-xl mb-2 text-[#0A1931] tracking-tight">Global Reach</h4>
@@ -112,7 +112,7 @@ export default function OurStory() {
           <div className="lg:w-1/2 flex flex-col justify-center text-left pl-0 lg:pl-8 mt-16 lg:mt-0">
             {/* Elegant Vertical Grounding Line */}
             <div className="border-l-[3px] border-gray-300 pl-6 md:pl-8 py-2">
-              <motion.h2 
+              <motion.h2
                 initial={{ y: 20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
@@ -122,7 +122,7 @@ export default function OurStory() {
               >
                 Our Story
               </motion.h2>
-              
+
               {/* Staggered Line-by-Line Reveal */}
               <motion.div variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="mb-8">
@@ -134,7 +134,7 @@ export default function OurStory() {
                     </div>
                   ))}
                 </div>
-                
+
                 <div>
                   {textLines2.map((line, index) => (
                     <div key={`p2-${index}`} className="overflow-hidden">

@@ -19,17 +19,17 @@ const floatingElements = [
     // Star outline with light trails
     content: (
       <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-[#D4AF37] drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]">
-        <motion.path 
-          d="M50 5L61 35H95L68 55L78 85L50 65L22 85L32 55L5 35H39L50 5Z" 
-          stroke="currentColor" 
+        <motion.path
+          d="M50 5L61 35H95L68 55L78 85L50 65L22 85L32 55L5 35H39L50 5Z"
+          stroke="currentColor"
           strokeWidth="1.5"
           initial={{ pathLength: 0, opacity: 0.5 }}
           animate={{ pathLength: 1, opacity: 1 }}
           transition={{ duration: 4, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
         />
-        <motion.path 
-          d="M50 15L58 38H82L62 52L70 75L50 60L30 75L38 52L18 38H42L50 15Z" 
-          stroke="currentColor" 
+        <motion.path
+          d="M50 15L58 38H82L62 52L70 75L50 60L30 75L38 52L18 38H42L50 15Z"
+          stroke="currentColor"
           strokeWidth="0.5"
           className="opacity-50"
           initial={{ rotate: 0 }}
@@ -49,7 +49,7 @@ const floatingElements = [
     type: 'card',
     content: (
       <div className="relative overflow-hidden flex flex-col gap-1 items-center justify-center p-4 md:p-6 w-full h-full bg-white/40 backdrop-blur-md border border-white/60 rounded-3xl">
-        <motion.div 
+        <motion.div
           className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg]"
           animate={{ left: ['-100%', '200%'] }}
           transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: 'easeInOut' }}
@@ -84,13 +84,13 @@ const floatingElements = [
         className="w-full h-full"
       >
         <svg viewBox="0 0 100 100" fill="none" className="w-full h-full text-[#B87333] drop-shadow-[0_10px_20px_rgba(184,115,51,0.3)]">
-          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="2 4"/>
-          <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="4"/>
-          <circle cx="50" cy="50" r="8" fill="currentColor"/>
-          <path d="M50 15L55 42H45L50 15Z" fill="currentColor"/>
-          <path d="M50 85L45 58H55L50 85Z" fill="currentColor"/>
-          <path d="M85 50L58 45V55L85 50Z" fill="currentColor"/>
-          <path d="M15 50L42 55V45L15 50Z" fill="currentColor"/>
+          <circle cx="50" cy="50" r="45" stroke="currentColor" strokeWidth="2" strokeDasharray="2 4" />
+          <circle cx="50" cy="50" r="35" stroke="currentColor" strokeWidth="4" />
+          <circle cx="50" cy="50" r="8" fill="currentColor" />
+          <path d="M50 15L55 42H45L50 15Z" fill="currentColor" />
+          <path d="M50 85L45 58H55L50 85Z" fill="currentColor" />
+          <path d="M85 50L58 45V55L85 50Z" fill="currentColor" />
+          <path d="M15 50L42 55V45L15 50Z" fill="currentColor" />
         </svg>
       </motion.div>
     ),
@@ -104,7 +104,7 @@ const floatingElements = [
     type: 'card',
     content: (
       <div className="relative overflow-hidden flex items-center gap-3 p-2 md:p-3 w-full h-full bg-white/50 backdrop-blur-2xl border border-white/60 rounded-full pr-4">
-        <motion.div 
+        <motion.div
           className="absolute top-0 left-[-100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-20deg]"
           animate={{ left: ['-100%', '200%'] }}
           transition={{ duration: 3, repeat: Infinity, repeatDelay: 5, ease: 'easeInOut' }}
@@ -131,7 +131,7 @@ const floatingElements = [
 export default function AntiGravityHero() {
   return (
     <section className="relative min-h-[90vh] md:min-h-screen w-full flex items-center justify-center pt-24 pb-20 overflow-hidden z-10">
-      
+
       {/* Background Texture */}
       <div className="absolute inset-0 pointer-events-none z-0" style={{
         backgroundColor: '#f9f8f4',
@@ -140,7 +140,7 @@ export default function AntiGravityHero() {
 
       {/* Glowing Geometric Wireframe World Map (Background for Text) */}
       <div className="absolute inset-0 flex items-center justify-center opacity-30 pointer-events-none z-0">
-        <motion.div 
+        <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 3, ease: 'easeOut' }}
@@ -207,13 +207,13 @@ export default function AntiGravityHero() {
       </div>
 
       {/* Central Typography Block */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, filter: 'blur(20px)', scale: 0.9 }}
         animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
         transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
         className="relative z-20 text-center max-w-4xl mx-auto px-6 pointer-events-auto flex flex-col items-center"
       >
-        <h1 
+        <h1
           className="text-[clamp(3.5rem,7vw,7rem)] font-serif tracking-tight leading-[1.05] mb-8 text-[#0A1931]"
           style={{ fontFamily: '"Playfair Display", Georgia, serif' }}
         >
