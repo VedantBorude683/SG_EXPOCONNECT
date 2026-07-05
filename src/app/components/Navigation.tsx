@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
-import heroVideo from '../../assets/mainvideo.mp4';
+import logoImg from '../../assets/logo.png';
 
 export default function Navigation({ delay = 0 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,54 +19,45 @@ export default function Navigation({ delay = 0 }) {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
-      className={`fixed top-0 w-full z-50 transition-all duration-700 ${isScrolled
-        ? 'bg-[#FCFAF5]/70 backdrop-blur-xl border-b border-[#D4AF37]/10 shadow-[0_10px_40px_rgba(10,25,49,0.03)] py-3'
-        : 'bg-transparent py-8'
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-700 ${isScrolled
+        ? 'bg-[#FCFAF5]/80 backdrop-blur-md border-b border-gray-200/50'
+        : 'bg-transparent py-2'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
-        <Link to="/" className="flex items-center justify-center h-20 w-64 relative -ml-30 overflow-hidden">
-          <video
-            src={heroVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-contain mix-blend-multiply scale-[1.3] origin-center"
-            style={{ filter: 'contrast(1.05)' }}
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center relative h-20">
+        <Link to="/" className="flex items-center -ml-12">
+          <img
+            src={logoImg}
+            alt="Logo"
+            className="h-12 md:h-16 w-auto object-contain mix-blend-multiply"
+            style={{ mixBlendMode: 'multiply' }}
           />
         </Link>
 
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {[
             { name: 'Home', path: '/' },
             { name: 'About Us', path: '/about-us' },
             { name: 'Team', path: '/team' },
             { name: 'Projects', path: '/projects' },
-            { name: 'Contact Us', path: '/contact' }
+            { name: 'Contact', path: '/contact' }
           ].map((item) => {
             const isActive = location.pathname === item.path;
             return (
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className={`text-sm font-semibold tracking-wide transition-colors relative group uppercase ${isActive ? 'text-[#0A1931]' : 'text-gray-500 hover:text-[#0A1931]'}`}
+                  className={`text-sm font-semibold tracking-wide transition-colors relative group uppercase ${isActive ? 'text-[#0A1931]' : 'text-[#0A1931]/70 hover:text-[#0A1931]'}`}
                 >
                   {item.name}
-                  <span className={`absolute -bottom-2 left-0 h-[2px] bg-[#FCFAF5] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-2 left-0 h-[2px] bg-[#0A1931] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               </li>
             );
           })}
         </ul>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-          className="group relative px-8 py-3.5 bg-[#0A1931] text-white rounded-full font-semibold overflow-hidden shadow-[0_10px_20px_rgba(10,25,49,0.15)]"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37] to-[#B87333] translate-y-[100%] group-hover:translate-y-[0%] transition-transform duration-500 ease-[0.16,1,0.3,1]" />
-          <span className="relative z-10 flex items-center gap-2">Initiate Contact <ArrowRight size={16} /></span>
-        </motion.button>
+
       </div>
     </motion.nav>
   );

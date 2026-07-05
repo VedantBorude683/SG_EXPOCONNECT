@@ -1,26 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router';
-import logo from '../../assets/IMG_6384.png';
+import logo from '../../assets/logo.png';
 import { Mail, Globe } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="w-full bg-[#FCFAF5] border-t border-gray-200/50 pt-20 pb-10 relative z-20">
       <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12">
-        
+
         {/* Left Column (The Anchor) */}
         <div className="md:col-span-8 flex flex-col items-start gap-6">
-          <img 
-            src={logo} 
-            alt="SG Expo Connect Logo" 
+          <img
+            src={logo}
+            alt="SG Expo Connect Logo"
             className="w-56 h-auto object-contain mix-blend-multiply"
           />
           <p className="text-gray-500 font-medium max-w-sm leading-relaxed">
             Redefining global business connections through extraordinary exhibition experiences.
           </p>
           <div className="flex gap-4 mt-2">
-             <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Mail size={18} /></div>
-             <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Globe size={18} /></div>
+            <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Mail size={18} /></div>
+            <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Globe size={18} /></div>
           </div>
         </div>
 

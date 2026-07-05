@@ -6,6 +6,9 @@ import heroVideo from '../assets/mainvideo.mp4';
 import PremiumGallery from './components/PremiumGallery';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import OurStory from './components/OurStory';
+import MeetTheTeam from './components/MeetTheTeam';
+import Projects from './components/Projects';
 
 const galleryImages = [
   {
@@ -40,36 +43,6 @@ const services = [
 const marqueeItems = [...services, ...services, ...services, ...services];
 
 const gatewaySections = [
-  {
-    title: "About Us",
-    subtitle: "Our Story",
-    description: "Discover our journey, our mission, and what drives us to create the world's most impactful business platforms and exhibitions.",
-    link: "/about-us",
-    images: [
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069&auto=format&fit=crop"
-    ]
-  },
-  {
-    title: "Our Team",
-    subtitle: "The Visionaries",
-    description: "Meet the strategists and execution experts who work relentlessly behind the scenes to make every event a masterpiece.",
-    link: "#team",
-    images: [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop"
-    ]
-  },
-  {
-    title: "Projects",
-    subtitle: "Portfolio",
-    description: "Explore our portfolio of world-class exhibitions, global summits, and high-profile industry networking events.",
-    link: "#projects",
-    images: [
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1974&auto=format&fit=crop"
-    ]
-  },
   {
     title: "Contact Us",
     subtitle: "Get In Touch",
@@ -173,6 +146,21 @@ export default function App() {
 
       {/* --- PREMIUM STORYTELLING GALLERY --- */}
       <PremiumGallery images={galleryImages} />
+
+      {/* --- HOMEPAGE ABOUT US (STATISTICS GRID) --- */}
+      <div className="relative z-10 w-full">
+        <OurStory />
+      </div>
+
+      {/* --- MEET THE TEAM SECTION --- */}
+      <div className="relative z-10 w-full">
+        <MeetTheTeam />
+      </div>
+
+      {/* --- PROJECTS SECTION --- */}
+      <div className="relative z-10 w-full">
+        <Projects />
+      </div>
 
       {/* --- PAGE GATEWAY SECTIONS --- */}
       <div className="relative z-10 bg-white">
