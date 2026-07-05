@@ -117,18 +117,19 @@ export default function App() {
 
       {/* --- SMART GLASS NAVIGATION --- */}
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-12 z-10 w-full overflow-hidden bg-gradient-to-b from-white via-white to-transparent">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-12 z-10 w-full overflow-hidden bg-gradient-to-b from-white via-white to-transparent">
         <motion.div
-          className="w-full relative flex flex-col items-center"
+          className="w-full max-w-7xl mx-auto px-8 relative"
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
         >
-          {/* The Seamless White Matcher */}
-          <div className="w-full flex justify-center items-center py-10 bg-transparent">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            
+            {/* Left Column: Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: tVideo }}
-              className="w-full max-w-[750px] mx-auto"
+              className="w-full relative flex justify-center items-center"
             >
               <video
                 src={heroVideo}
@@ -136,10 +137,40 @@ export default function App() {
                 loop
                 muted
                 playsInline
-                className="w-full max-w-[750px] h-auto object-contain mx-auto shadow-none border-none"
-                style={{ backgroundColor: '#FCFAF5' }}
+                className="w-full h-auto object-contain mix-blend-multiply shadow-none border-none"
+                style={{ backgroundColor: 'transparent' }}
               />
             </motion.div>
+
+            {/* Right Column: Text Content */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={fadeUpSequence}
+              className="flex flex-col items-start"
+            >
+              <h1 className="font-serif font-black text-[#0A1931] text-[clamp(2.5rem,4vw,3.5rem)] leading-[1.1] tracking-tight mb-8">
+                <span className="block mb-2 text-gray-800">Where Industries Meet.</span>
+                <span className="block mb-2 text-gray-800">Where Ideas Connect.</span>
+                <span className="block text-[#D4AF37]">Where Business Grows.</span>
+              </h1>
+              
+              <p className="text-gray-600 text-lg md:text-xl font-light leading-relaxed mb-8">
+                <strong className="font-semibold text-[#0A1931]">SG Expo Connect</strong> creates powerful exhibitions, conferences, and business networking platforms that bring together industry leaders, innovators, and decision-makers.
+              </p>
+
+              <div className="mb-10">
+                <p className="text-xl font-medium tracking-wide text-[#0A1931]">
+                  Connect. Collaborate. Grow.
+                </p>
+              </div>
+              
+              <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
+                Contact Us Now
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </a>
+            </motion.div>
+
           </div>
         </motion.div>
       </section>

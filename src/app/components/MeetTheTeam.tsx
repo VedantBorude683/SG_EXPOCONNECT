@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { AlignCenter, ArrowRight } from 'lucide-react';
-import p1 from '../../assets/p1.jpg';
 import p2 from '../../assets/p2.jpg';
 import p3 from '../../assets/p3.jpg';
 import p4 from '../../assets/p4.jpg';
 import p5 from '../../assets/p5.jpg';
+import leader1 from '../../assets/leader1.jpg';
+import leader2 from '../../assets/leader2.jpg';
 
 export default function MeetTheTeam() {
   const containerVariants = {
@@ -25,11 +26,12 @@ export default function MeetTheTeam() {
   };
 
   const team = [
-    { name: "Eleanor Wright", role: "Chief Executive Officer", image: p1, position: "object-center" },
-    { name: "Sophia Lin", role: "Global Operations", image: p3, position: "object-top" },
-    { name: "Marcus Thorne", role: "Head of Exhibitions", image: p2, position: "object-center" },
-    { name: "James Holden", role: "Creative Director", image: p4, position: "object-center" },
-    { name: "David Chen", role: "Strategy Director", image: p5, position: "object-center" }
+    { name: "Sujoy Gomes", role: "Founder & Managing Director", image: leader1, position: "object-center" },
+    { name: "Manas Gomes", role: "Office Manager", image: leader2, position: "object-top" },
+    { name: "Jaishree Gomes", role: "Founder", image: p3, position: "object-center" },
+    { name: "Bharati Mera ", role: "Exhibition Head", image: p2, position: "object-center" },
+    { name: "Piyush Gomes", role: "Director Operation", image: p4, position: "object-center" },
+    { name: "Nageshwari Tambe", role: "Finance Manager", image: p5, position: "object-center" }
   ];
 
   const renderCard = (member: any, idx: number) => (
@@ -63,49 +65,40 @@ export default function MeetTheTeam() {
   );
 
   return (
-    <section className="w-full bg-[#FCFAF5] py-24 relative z-10">
-      <div className="max-w-7xl mx-auto px-8">
+    <section className="w-full bg-[#FCFAF5] py-24 relative z-10 overflow-hidden">
 
-        {/* Header */}
+      {/* Header — still constrained */}
+      <div className="max-w-7xl mx-auto px-8">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-serif text-[#0A1931] font-bold text-5xl md:text-6xl tracking-tight">
-            Meet our <span className="bold  text-yellow-600 font-light">Leaders.</span>
+            Meet our <span className="bold text-yellow-600 font-light">Leaders.</span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto mt-6 text-lg">
             The minds behind the world's most impactful global exhibitions.
           </p>
         </motion.div>
-
-        {/* The Carousel */}
-        <motion.div
-          className="flex overflow-x-auto gap-6 pb-12 pt-4 px-4 snap-x snap-mandatory scroll-smooth hide-scrollbar mt-16 -mx-4 sm:mx-0"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-        >
-          {team.map((member, idx) => renderCard(member, idx))}
-        </motion.div>
-
       </div>
 
-      {/* Hide Scrollbar CSS */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
+      {/* Full-width scrollable carousel */}
+      <motion.div
+        className="flex overflow-x-auto gap-6 pb-8 pt-4 mt-12 px-8 snap-x snap-mandatory scroll-smooth"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#D4AF37 #f1f1f1' }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={containerVariants}
+      >
+        {team.map((member, idx) => renderCard(member, idx))}
+        {/* Spacer so last card isn't flush against edge */}
+        <div className="flex-shrink-0 w-4" />
+      </motion.div>
+
     </section>
   );
 }
