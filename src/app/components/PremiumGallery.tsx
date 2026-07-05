@@ -95,9 +95,11 @@ export default function PremiumGallery({ images, autoplayInterval = 4000 }: Prem
         {/* Title */}
         <div className="text-center mb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[#D4AF37] font-semibold tracking-widest uppercase text-sm mb-4">
-            Curated Experiences
+            Our Work In Action
           </motion.div>
-
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="font-serif font-bold text-[#0A1931] text-4xl md:text-5xl tracking-tight">
+            Global Exhibitions & <span className="font-serif font-bold text-yellow-600 font-light">Events.</span>
+          </motion.h2>
         </div>
 
         {/* 3D Floating Cards Container */}

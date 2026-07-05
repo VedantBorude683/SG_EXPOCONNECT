@@ -30,7 +30,7 @@ export default function Projects() {
 
       {/* Featured Projects Grid */}
       <div className="max-w-7xl mx-auto px-6 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
 
           {/* Card 1: Cement Dubai - Large Left */}
           <motion.div
@@ -38,7 +38,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-2 md:row-span-2 relative h-[525px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
+            className="md:col-span-2 lg:col-span-2 lg:row-span-2 relative h-[280px] md:h-[400px] lg:h-[525px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
           >
             <img
               src={galleryProjects[0].image}
@@ -64,7 +64,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-1 md:row-span-1 relative h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
+            className="md:col-span-1 lg:row-span-1 relative h-[220px] md:h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
           >
             <img
               src={galleryProjects[1].image}
@@ -85,7 +85,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-1 md:row-span-1 relative h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
+            className="md:col-span-1 lg:row-span-1 relative h-[220px] md:h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
           >
             <img
               src={galleryProjects[2].image}
@@ -106,7 +106,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-1 md:row-span-1 relative h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
+            className="md:col-span-1 lg:row-span-1 relative h-[220px] md:h-[250px] rounded-3xl overflow-hidden group bg-slate-100 cursor-pointer shadow-lg"
           >
             <img
               src={galleryProjects[3].image}
@@ -127,7 +127,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-1 md:row-span-1 h-[250px] flex items-center justify-center"
+            className="md:col-span-1 lg:row-span-1 h-[220px] md:h-[250px] flex items-center justify-center"
           >
             <button className="flex items-center gap-3 bg-[#0A1931] hover:bg-[#0A1931]/90 text-white font-semibold text-lg px-8 py-4 rounded-full transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 group">
               View All Projects

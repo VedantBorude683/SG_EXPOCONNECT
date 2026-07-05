@@ -9,27 +9,28 @@ import Footer from './components/Footer';
 import OurStory from './components/OurStory';
 import MeetTheTeam from './components/MeetTheTeam';
 import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 const galleryImages = [
   {
     url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
-    title: "Global Exhibitions",
-    caption: "Experience world-class business networking environments."
+    title: "World-Class Exhibitions",
+    caption: "SG Expo Connect orchestrates large-scale international trade exhibitions across the globe, bringing industries together under one roof."
   },
   {
     url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
-    title: "Premium Venues",
-    caption: "Immersive spaces designed to foster innovation and connection."
+    title: "Industry Conferences",
+    caption: "We design and manage high-impact conferences that position your brand at the forefront of global industry conversations."
   },
   {
     url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop",
-    title: "Industry Leaders",
-    caption: "Learn from the visionaries shaping the future of global enterprise."
+    title: "B2B Networking Platforms",
+    caption: "Our bespoke matchmaking events connect decision-makers, investors, and innovators for meaningful business partnerships."
   },
   {
     url: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=2070&auto=format&fit=crop",
-    title: "Elite Matchmaking",
-    caption: "Curated encounters that accelerate your brand's international growth."
+    title: "Global Event Management",
+    caption: "From Dubai to Mumbai, we execute events with precision, creativity, and an unwavering commitment to excellence."
   }
 ];
 
@@ -42,18 +43,7 @@ const services = [
 
 const marqueeItems = [...services, ...services, ...services, ...services];
 
-const gatewaySections = [
-  {
-    title: "Contact Us",
-    subtitle: "Get In Touch",
-    description: "Ready to elevate your brand globally? Get in touch with our team to start planning your next monumental business opportunity.",
-    link: "#contact",
-    images: [
-      "https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=2071&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1557425955-df376b5903c8?q=80&w=2070&auto=format&fit=crop"
-    ]
-  }
-];
+
 
 export default function App() {
   const { scrollYProgress } = useScroll();
@@ -117,19 +107,19 @@ export default function App() {
 
       {/* --- SMART GLASS NAVIGATION --- */}
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-12 z-10 w-full overflow-hidden bg-gradient-to-b from-white via-white to-transparent">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-32 pb-12 z-10 w-full overflow-hidden bg-[#FCFAF5]">
         <motion.div
-          className="w-full max-w-7xl mx-auto px-8 relative"
+          className="w-full max-w-7xl mx-auto px-6 md:px-8 relative"
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+
             {/* Left Column: Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1.2, ease: "easeOut", delay: tVideo }}
-              className="w-full relative flex justify-center items-center"
+              className="w-full relative flex justify-center items-center order-1 lg:order-1"
             >
               <video
                 src={heroVideo}
@@ -137,8 +127,8 @@ export default function App() {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto object-contain mix-blend-multiply shadow-none border-none"
-                style={{ backgroundColor: 'transparent' }}
+                className="w-full max-w-sm lg:max-w-full h-auto object-contain mix-blend-multiply shadow-none border-none"
+                style={{ backgroundColor: '#FCFAF5' }}
               />
             </motion.div>
 
@@ -147,28 +137,25 @@ export default function App() {
               initial="hidden"
               animate="visible"
               variants={fadeUpSequence}
-              className="flex flex-col items-start"
+              className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-2"
             >
-              <h1 className="font-serif font-black text-[#0A1931] text-[clamp(2.5rem,4vw,3.5rem)] leading-[1.1] tracking-tight mb-8">
-                <span className="block mb-2 text-gray-800">Where Industries Meet.</span>
-                <span className="block mb-2 text-gray-800">Where Ideas Connect.</span>
-                <span className="block text-[#D4AF37]">Where Business Grows.</span>
+              <h1 className="font-serif font-black text-[#0A1931] text-[clamp(2rem,6vw,3.5rem)] leading-[1.1] tracking-tight mb-4">
+                <span className="block mb-1 text-gray-800">Where Industries Meet</span>
+                <span className="block mb-1 text-gray-800">Where Ideas Connect</span>
+                <span className="block text-[#D4AF37]">Where Business Grows</span>
               </h1>
-              
-              <p className="text-gray-600 text-lg md:text-xl font-light leading-relaxed mb-8">
+
+              <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed mb-6 max-w-lg">
                 <strong className="font-semibold text-[#0A1931]">SG Expo Connect</strong> creates powerful exhibitions, conferences, and business networking platforms that bring together industry leaders, innovators, and decision-makers.
               </p>
 
-              <div className="mb-10">
-                <p className="text-xl font-medium tracking-wide text-[#0A1931]">
+              <div className="mb-8">
+                <p className="text-lg font-medium tracking-wide text-[#0A1931]">
                   Connect. Collaborate. Grow.
                 </p>
               </div>
-              
-              <a href="#contact" className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
-                Contact Us Now
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+
+
             </motion.div>
 
           </div>
@@ -193,80 +180,9 @@ export default function App() {
         <Projects />
       </div>
 
-      {/* --- PAGE GATEWAY SECTIONS --- */}
-      <div className="relative z-10 bg-white">
-        {gatewaySections.map((section, idx) => {
-          const isEven = idx % 2 === 0;
-          return (
-            <section key={idx} className={`relative py-32 overflow-hidden ${isEven ? 'bg-white' : 'bg-[#FDFCF8] border-y border-gray-100/50'}`}>
-              <div className="max-w-7xl mx-auto px-8">
-                <div className={`flex flex-col lg:flex-row items-center gap-16 lg:gap-24 ${!isEven ? 'lg:flex-row-reverse' : ''}`}>
-
-                  {/* Text Content */}
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={{
-                      hidden: { opacity: 0 },
-                      visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-                    }}
-                    className="flex-1 w-full flex flex-col items-start"
-                  >
-                    <motion.div variants={{ hidden: { opacity: 0, x: isEven ? -40 : 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
-                      <div className="px-6 py-2 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#B87333] font-semibold text-sm tracking-widest uppercase mb-6 shadow-sm inline-block">
-                        {section.subtitle}
-                      </div>
-                    </motion.div>
-                    <motion.h2 variants={{ hidden: { opacity: 0, x: isEven ? -40 : 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-[clamp(2.5rem,4vw,3.5rem)] font-black text-[#0A1931] tracking-tight leading-[1.1] mb-6">
-                      {section.title}
-                    </motion.h2>
-                    <motion.p variants={{ hidden: { opacity: 0, x: isEven ? -40 : 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }} className="text-xl text-gray-600 font-light leading-relaxed mb-10">
-                      {section.description}
-                    </motion.p>
-                    <motion.div variants={{ hidden: { opacity: 0, x: isEven ? -40 : 40 }, visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } } }}>
-                      {section.link.startsWith('/') ? (
-                        <Link to={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
-                          Read More
-                          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      ) : (
-                        <a href={section.link} className="group inline-flex items-center gap-3 px-8 py-4 bg-[#0A1931] text-white rounded-full font-medium hover:bg-[#D4AF37] transition-colors shadow-lg">
-                          Read More
-                          <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
-                      )}
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Stacked Image Collection */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="flex-1 w-full"
-                  >
-                    <div className="relative w-full aspect-[4/3] group cursor-pointer perspective-[1000px]">
-                      {/* Back Image Card (slightly offset) */}
-                      <div className="absolute inset-4 sm:inset-8 bg-gray-200 rounded-[2rem] overflow-hidden shadow-xl transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:rotate-[8deg] group-hover:translate-x-10 group-hover:-translate-y-4" style={{ transformOrigin: 'bottom left', rotate: '4deg' }}>
-                        <img src={section.images[1]} className="w-full h-full object-cover opacity-70 mix-blend-multiply" alt="Background" />
-                        <div className="absolute inset-0 bg-[#0A1931]/10" />
-                      </div>
-
-                      {/* Front Image Card */}
-                      <div className="absolute inset-0 sm:inset-4 bg-white rounded-[2rem] overflow-hidden shadow-[0_20px_40px_rgba(10,25,49,0.15)] transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:-rotate-[4deg] group-hover:-translate-x-6 group-hover:translate-y-2 z-10 border-[6px] border-white" style={{ transformOrigin: 'bottom right', rotate: '-2deg' }}>
-                        <img src={section.images[0]} className="w-full h-full object-cover" alt={section.title} />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/0 via-white/10 to-[#D4AF37]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                      </div>
-                    </div>
-                  </motion.div>
-
-                </div>
-              </div>
-            </section>
-          )
-        })}
+      {/* --- CONTACT SECTION --- */}
+      <div className="relative z-10 w-full">
+        <Contact />
       </div>
 
       {/* --- PREMIERE FOOTER --- */}

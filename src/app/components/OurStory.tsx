@@ -37,7 +37,7 @@ const whyUsData = [
 
 export default function OurStory() {
   return (
-    <section className="w-full relative z-10 overflow-hidden py-24 bg-[#0A1931]">
+    <section className="w-full relative z-10 overflow-hidden py-16 md:py-24 bg-[#0A1931]">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -48,18 +48,18 @@ export default function OurStory() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A1931]/90 via-[#0A1931]/80 to-[#0A1931]"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
+          className="text-center mb-12 md:mb-16"
         >
           <div className="text-[#D4AF37] font-semibold text-sm tracking-widest mb-4">
-            SGExpoConnect
+
           </div>
-          <h2 className="font-serif font-bold text-white text-5xl md:text-6xl tracking-tight leading-tight">
+          <h2 className="font-serif font-bold text-white text-4xl md:text-5xl lg:text-6xl tracking-tight leading-tight">
             Why Choose Us
           </h2>
         </motion.div>
@@ -80,9 +80,9 @@ export default function OurStory() {
             const Icon = item.icon;
             // Add borders to create the grid effect similar to the image
             const borderClasses = `
-              border-b border-white/10 p-10 flex flex-col items-center text-center
-              ${idx % 3 !== 2 ? 'lg:border-r' : ''} 
-              ${idx % 2 !== 1 ? 'md:border-r lg:border-r-0' : 'lg:border-r-0'}
+              border-b border-white/10 p-6 md:p-10 flex flex-col items-center text-center
+              ${idx % 3 !== 2 ? 'lg:border-r' : ''}
+              ${idx % 2 !== 1 ? 'md:border-r lg:border-r-0' : 'md:border-r-0'}
               ${idx >= 3 ? 'lg:border-b-0' : ''}
               ${idx >= 4 ? 'md:border-b-0' : ''}
             `;

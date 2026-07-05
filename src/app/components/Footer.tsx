@@ -1,62 +1,104 @@
 import React from 'react';
 import { Link } from 'react-router';
 import logo from '../../assets/logo.png';
-import { Mail, Globe } from 'lucide-react';
+import { Linkedin, Facebook, Instagram } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#FCFAF5] border-t border-gray-200/50 pt-20 pb-10 relative z-20">
-      <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-12 gap-12">
+    <footer className="w-full bg-[#FCFAF5] border-t border-gray-200/60 text-[#0A1931] relative z-20">
+      
+      {/* Main Footer Body */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
 
-        {/* Left Column (The Anchor) */}
-        <div className="md:col-span-8 flex flex-col items-start gap-6">
+        {/* Column 1: Brand */}
+        <div className="flex flex-col gap-5">
           <img
             src={logo}
             alt="SG Expo Connect Logo"
-            className="w-56 h-auto object-contain mix-blend-multiply"
+            className="w-40 h-auto object-contain"
+            style={{ backgroundColor: '#FCFAF5', padding: '4px' }}
           />
-          <p className="text-gray-500 font-medium max-w-sm leading-relaxed">
-            Redefining global business connections through extraordinary exhibition experiences.
+          <p className="text-gray-500 text-sm leading-relaxed">
+            With years of industry experience, we are a dedicated team of exhibition professionals who understand that every event is an opportunity to make a lasting impression.
           </p>
-          <div className="flex gap-4 mt-2">
-            <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Mail size={18} /></div>
-            <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:bg-[#D4AF37] hover:text-white hover:border-transparent transition-all cursor-pointer"><Globe size={18} /></div>
+          <div className="flex gap-3 mt-2">
+            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+              <Linkedin size={15} />
+            </a>
+            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+              <Facebook size={15} />
+            </a>
+            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+              <Instagram size={15} />
+            </a>
           </div>
         </div>
 
-        {/* Right Column (Links) */}
-        <div className="md:col-span-4 flex flex-col items-start md:items-end gap-6">
-          <h4 className="text-lg font-bold text-[#0A1931] uppercase tracking-widest mb-2">Explore</h4>
-          <ul className="flex flex-col items-start md:items-end gap-4">
-            {[
-              { name: 'Home', path: '/' },
-              { name: 'About Us', path: '/about-us' },
-              { name: 'Team', path: '/team' },
-              { name: 'Projects', path: '/projects' },
-              { name: 'Contact', path: '/contact' }
-            ].map((item) => (
-              <li key={item.name}>
-                <Link
-                  to={item.path}
-                  className="text-gray-600 font-semibold uppercase tracking-wider text-sm transition-colors hover:text-blue-900"
-                >
-                  {item.name}
-                </Link>
+        {/* Column 2: Company Links */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-yellow-600 font-bold text-base tracking-wide mb-1">Company</h4>
+          <div className="w-10 h-px bg-yellow-600 mb-3" />
+          <ul className="flex flex-col gap-3">
+            {['Home', 'About Us', 'Team', 'Projects', 'Contact Us'].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-gray-500 text-sm hover:text-[#0A1931] transition-colors cursor-pointer group">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                {item}
               </li>
             ))}
           </ul>
         </div>
+
+        {/* Column 3: Services */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-yellow-600 font-bold text-base tracking-wide mb-1">Services</h4>
+          <div className="w-10 h-px bg-yellow-600 mb-3" />
+          <ul className="flex flex-col gap-3">
+            {[
+              'Exhibition Management',
+              'Conference Planning',
+              'B2B Networking Events',
+              'Trade Show Consulting',
+              'Event Logistics',
+              'Global Event Marketing',
+              'Venue Sourcing',
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-gray-500 text-sm hover:text-[#0A1931] transition-colors cursor-pointer group">
+                <span className="w-1.5 h-1.5 rounded-full bg-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Column 4: Contact Info */}
+        <div className="flex flex-col gap-4">
+          <h4 className="text-yellow-600 font-bold text-base tracking-wide mb-1">Contact Info</h4>
+          <div className="w-10 h-px bg-yellow-600 mb-3" />
+          <div className="flex flex-col gap-4 text-gray-500 text-sm">
+            <p className="leading-relaxed">
+              SG Expo Connect India Pvt Ltd<br />
+              Mumbai, India
+            </p>
+            <a href="mailto:info@sgexpoconnect.com" className="text-yellow-600 hover:text-yellow-500 transition-colors">
+              info@sgexpoconnect.com
+            </a>
+            <a href="tel:+919876543210" className="text-yellow-600 hover:text-yellow-500 transition-colors">
+              +91 98765 43210
+            </a>
+          </div>
+        </div>
+
       </div>
 
-      <div className="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-gray-200/50 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-sm text-gray-400 font-medium">
-          © {new Date().getFullYear()} SG Expo Connect India Pvt Ltd. All rights reserved.
-        </p>
-        <div className="flex gap-6 text-sm text-gray-400">
-          <a href="#" className="hover:text-blue-900 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-blue-900 transition-colors">Terms of Service</a>
+      {/* Bottom Bar */}
+      <div className="border-t border-gray-200/60">
+        <div className="max-w-7xl mx-auto px-8 py-5 flex justify-center items-center">
+          <p className="text-sm text-gray-500">
+            Copyright © {new Date().getFullYear()} SG Expo Connect India Pvt Ltd. All Rights Reserved.
+          </p>
         </div>
       </div>
+
     </footer>
   );
 }
