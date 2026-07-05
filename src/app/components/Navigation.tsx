@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
-import logoImg from '../../assets/logo.png';
+import logoVideo from '../../assets/logo.mp4';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -40,12 +40,18 @@ export default function Navigation({ delay = 0 }) {
         <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
 
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src={logoImg}
-              alt="Logo"
-              className="h-12 md:h-14 w-auto object-contain mix-blend-multiply "
-              style={{ mixBlendMode: 'multiply' }}
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <video
+              src={logoVideo}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="h-14 md:h-16 w-auto object-contain"
+              style={{
+                backgroundColor: 'transparent',
+                mixBlendMode: 'multiply',
+              }}
             />
           </Link>
 

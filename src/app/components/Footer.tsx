@@ -1,22 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router';
-import logo from '../../assets/logo.png';
-import { Linkedin, Facebook, Instagram } from 'lucide-react';
+import logoVideo from '../../assets/logo.mp4';
+import { Linkedin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="w-full bg-[#FCFAF5] border-t border-gray-200/60 text-[#0A1931] relative z-20">
-      
+
       {/* Main Footer Body */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
 
         {/* Column 1: Brand */}
         <div className="flex flex-col gap-5">
-          <img
-            src={logo}
-            alt="SG Expo Connect Logo"
+          <video
+            src={logoVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-40 h-auto object-contain"
-            style={{ backgroundColor: '#FCFAF5', padding: '4px' }}
+            style={{ backgroundColor: '#FCFAF5', mixBlendMode: 'multiply' }}
           />
           <p className="text-gray-500 text-sm leading-relaxed">
             With years of industry experience, we are a dedicated team of exhibition professionals who understand that every event is an opportunity to make a lasting impression.
@@ -30,6 +33,12 @@ export default function Footer() {
             </a>
             <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
               <Instagram size={15} />
+            </a>
+            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+              <Twitter size={15} />
+            </a>
+            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+              <Youtube size={15} />
             </a>
           </div>
         </div>
@@ -54,13 +63,12 @@ export default function Footer() {
           <div className="w-10 h-px bg-yellow-600 mb-3" />
           <ul className="flex flex-col gap-3">
             {[
-              'Exhibition Management',
-              'Conference Planning',
-              'B2B Networking Events',
-              'Trade Show Consulting',
-              'Event Logistics',
-              'Global Event Marketing',
-              'Venue Sourcing',
+              'Exhibition Space Selling',
+              'Conference Selling',
+              'Awarda Selling',
+              'Pavallion Selling',
+              'Roundtable Selling',
+              'B2B meeting selling',
             ].map((item) => (
               <li key={item} className="flex items-center gap-2 text-gray-500 text-sm hover:text-[#0A1931] transition-colors cursor-pointer group">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -79,11 +87,9 @@ export default function Footer() {
               SG Expo Connect India Pvt Ltd<br />
               Mumbai, India
             </p>
-            <a href="mailto:info@sgexpoconnect.com" className="text-yellow-600 hover:text-yellow-500 transition-colors">
-              info@sgexpoconnect.com
-            </a>
-            <a href="tel:+919876543210" className="text-yellow-600 hover:text-yellow-500 transition-colors">
-              +91 98765 43210
+
+            <a href="tel:09594546757" className="text-yellow-600 hover:text-yellow-500 transition-colors">
+              +91 09594546757
             </a>
           </div>
         </div>
