@@ -6,6 +6,7 @@ import p4 from '../../assets/p4.jpg';
 import p5 from '../../assets/p5.jpg';
 import leader1 from '../../assets/leader1.jpg';
 import leader2 from '../../assets/leader2.jpg';
+import p6 from '../../assets/p6.jpg';
 
 export default function MeetTheTeam() {
   const team = [
@@ -14,7 +15,7 @@ export default function MeetTheTeam() {
     { name: "Piyush Gomes", role: "Director Operation", image: p4, position: "object-center" },
     { name: "Bharati Mera", role: "Exhibition Head", image: p2, position: "object-center" },
     { name: "Nageshwari Tambe", role: "Finance Manager", image: p5, position: "object-center" },
-    { name: "Manas Gomes", role: "Office Manager", image: leader2, position: "object-top" }
+    { name: "Manas Gomes", role: "Office Manager", image: p6, position: "object-[10%_top]" }
   ];
 
   const renderCard = (member: any, idx: number) => (
