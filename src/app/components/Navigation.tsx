@@ -33,7 +33,7 @@ export default function Navigation({ delay = 0 }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
         className={`fixed w-full top-0 left-0 z-50 transition-all duration-700 ${isScrolled
-          ? 'bg-[#FCFAF5]/90 backdrop-blur-md border-b border-gray-200/50 shadow-sm'
+          ? 'bg-white shadow-sm'
           : 'bg-transparent py-2'
           }`}
       >

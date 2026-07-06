@@ -34,7 +34,7 @@ export default function MeetTheTeam() {
 
   return (
     <section className="w-full bg-[#FCFAF5] py-24 relative z-10 overflow-hidden font-sans">
-      
+
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 relative z-20 text-center">
         <motion.div
@@ -54,9 +54,9 @@ export default function MeetTheTeam() {
 
       {/* The Pyramid Layout */}
       <div className="flex flex-col items-center gap-16 max-w-7xl mx-auto px-6 mt-16">
-        
+
         {/* Row 1 (Top Boss) */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-[320px]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ export default function MeetTheTeam() {
         </motion.div>
 
         {/* Row 2 (Second in Command) */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-[320px]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export default function MeetTheTeam() {
         </motion.div>
 
         {/* Row 3 (Third in Command) */}
-        <motion.div 
+        <motion.div
           className="w-full max-w-[320px]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export default function MeetTheTeam() {
         </motion.div>
 
         {/* Row 4 (The Department Heads) */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
