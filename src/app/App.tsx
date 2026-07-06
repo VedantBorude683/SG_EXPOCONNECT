@@ -107,7 +107,7 @@ export default function App() {
 
       {/* --- SMART GLASS NAVIGATION --- */}
 
-      <section className="relative min-h-screen flex flex-col items-center justify-center pt-24 md:pt-32 pb-12 z-10 w-full overflow-hidden bg-[#FCFAF5]">
+      <section className="relative min-h-screen flex flex-col items-center justify-center pb-12 z-10 w-full overflow-hidden bg-[#FDFCF8]">
         <motion.div
           className="w-full max-w-7xl mx-auto px-6 md:px-8 relative"
           style={{ opacity: heroOpacity, y: heroY, scale: heroScale }}
@@ -127,7 +127,7 @@ export default function App() {
                 loop
                 muted
                 playsInline
-                className="w-full max-w-sm lg:max-w-full h-auto object-contain mix-blend-multiply shadow-none border-none"
+                className="w-full max-w-sm lg:max-w-full h-auto object-contain mix-blend-multiply shadow-none border-none -translate-y-4 lg:-translate-y-8"
                 style={{ backgroundColor: '#FCFAF5' }}
               />
             </motion.div>

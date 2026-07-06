@@ -18,8 +18,8 @@ export default function Footer() {
             loop
             muted
             playsInline
-            className="w-70 h-auto object-contain"
-            style={{ backgroundColor: 'transparent', mixBlendMode: 'multiply' }}
+            className="w-56 h-auto object-contain"
+            style={{ backgroundColor: 'transparent', mixBlendMode: 'darken', borderRadius: '4px' }}
           />
           <p className="text-gray-500 text-sm leading-relaxed">
             With years of industry experience, we are a dedicated team of exhibition professionals who understand that every event is an opportunity to make a lasting impression.

@@ -32,12 +32,9 @@ export default function Navigation({ delay = 0 }) {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
-        className={`fixed w-full top-0 left-0 z-50 transition-all duration-700 ${isScrolled
-          ? 'bg-[#FCFAF5] shadow-sm border-b border-[#e8e0d0]/60'
-          : 'bg-[#FCFAF5]/0 py-2'
-          }`}
+        className="fixed w-full top-0 left-0 z-50 bg-white transition-all duration-700"
       >
-        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between h-28">
+        <div className="w-full px-8 md:px-12 py-2 flex items-center justify-between h-36">
 
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
@@ -47,12 +44,7 @@ export default function Navigation({ delay = 0 }) {
               loop
               muted
               playsInline
-              className="h-28 md:h-28 w-auto object-contain"
-              style={{
-                backgroundColor: '#FCFAF5',
-                mixBlendMode: 'multiply',
-                borderRadius: '4px',
-              }}
+              className="w-28 sm:w-32 md:w-40 lg:w-48 h-auto max-h-32 object-contain transition-none duration-300 cursor-pointer bg-white rounded-xl md:rounded-[24px] lg:rounded-[39px]"
             />
           </Link>
 

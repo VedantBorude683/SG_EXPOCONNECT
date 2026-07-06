@@ -10,6 +10,9 @@ createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <ScrollToTop />
     <Navigation delay={1.4} />
+    <div className="h-36" />
+    {/* Gradient blur transition from navbar to page body */}
+    <div className="fixed top-36 left-0 w-full h-6 bg-gradient-to-b from-white to-white/0 pointer-events-none z-40" />
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/about-us" element={<AboutUs />} />
