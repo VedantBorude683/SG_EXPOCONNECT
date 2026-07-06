@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
-import logoVideo from '../../assets/logo.mp4';
+import mainVideo from '../../assets/mainvideo.mp4';
 import { Linkedin, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#FCFAF5] border-t border-gray-200/60 text-[#0A1931] relative z-20">
+    <footer className="w-full bg-[#FDFCF8] border-t border-[#e8e0d0]/60 text-[#0A1931] relative z-20">
 
       {/* Main Footer Body */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
@@ -13,13 +13,13 @@ export default function Footer() {
         {/* Column 1: Brand */}
         <div className="flex flex-col gap-5">
           <video
-            src={logoVideo}
+            src={mainVideo}
             autoPlay
             loop
             muted
             playsInline
-            className="w-40 h-auto object-contain"
-            style={{ backgroundColor: '#FCFAF5', mixBlendMode: 'multiply' }}
+            className="w-70 h-auto object-contain"
+            style={{ backgroundColor: 'transparent', mixBlendMode: 'multiply' }}
           />
           <p className="text-gray-500 text-sm leading-relaxed">
             With years of industry experience, we are a dedicated team of exhibition professionals who understand that every event is an opportunity to make a lasting impression.

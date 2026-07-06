@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
-import logoVideo from '../../assets/logo.mp4';
+import mainVideo from '../../assets/mainvideo.mp4';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -33,24 +33,25 @@ export default function Navigation({ delay = 0 }) {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
         className={`fixed w-full top-0 left-0 z-50 transition-all duration-700 ${isScrolled
-          ? 'bg-white shadow-sm'
-          : 'bg-transparent py-2'
+          ? 'bg-[#FCFAF5] shadow-sm border-b border-[#e8e0d0]/60'
+          : 'bg-[#FCFAF5]/0 py-2'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between h-28">
 
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
             <video
-              src={logoVideo}
+              src={mainVideo}
               autoPlay
               loop
               muted
               playsInline
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-28 md:h-28 w-auto object-contain"
               style={{
-                backgroundColor: 'transparent',
+                backgroundColor: '#FCFAF5',
                 mixBlendMode: 'multiply',
+                borderRadius: '4px',
               }}
             />
           </Link>
