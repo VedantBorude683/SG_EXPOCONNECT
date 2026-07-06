@@ -26,8 +26,8 @@ export default function MeetTheTeam() {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931] via-[#0A1931]/60 to-transparent opacity-90 h-1/2 mt-auto" />
       <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-20">
-        <h3 className="text-white font-bold text-2xl mb-1">{member.name}</h3>
-        <p className="text-yellow-500 font-mono text-xs uppercase tracking-widest">{member.role}</p>
+        <h3 className="text-white font-extrabold text-4xl mb-2 drop-shadow-md">{member.name}</h3>
+        <p className="text-yellow-400 font-semibold text-base md:text-lg uppercase tracking-widest drop-shadow-sm">{member.role}</p>
       </div>
     </div>
   );

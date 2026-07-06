@@ -77,15 +77,7 @@ export default function Projects() {
               </div>
 
               {/* Right Side (Badges & Arrow) */}
-              <div className="flex items-center gap-4">
-                {project.isActive && (
-                  <span className="flex items-center text-[10px] font-bold text-green-700 uppercase tracking-widest bg-green-100 px-3 py-1 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse mr-2"></span>
-                    Active
-                  </span>
-                )}
-                <ArrowRight className="w-6 h-6 text-gray-300 group-hover:text-yellow-600 group-hover:translate-x-2 transition-all duration-300" />
-              </div>
+
 
             </motion.div>
           );
