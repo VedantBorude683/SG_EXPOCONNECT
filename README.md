@@ -1,11 +1,32 @@
 
-  # Enhance Homepage Animations
+# SG Expo Connect
 
-  This is a code bundle for Enhance Homepage Animations. The original project is available at https://www.figma.com/design/Evsl7hDoww5sQu6N8w2rlQ/Enhance-Homepage-Animations.
+SG Expo Connect is a modern and responsive business events and exhibition platform designed to showcase conferences, exhibitions, networking opportunities, and professional event services.
 
-  ## Running the code
+## Features
 
-  Run `npm i` to install the dependencies.
+* Modern and responsive UI
+* Event and exhibition showcase
+* Business networking opportunities
+* Services and company information
+* Contact and enquiry section
+* Smooth navigation and interactive UI
 
-  Run `npm run dev` to start the development server.
-  
+## Tech Stack
+
+* React.js
+* TypeScript
+* Tailwind CSS
+* Vite
+
+## Run Locally
+
+```bash
+cd sg-expo-connect
+npm install
+npm run dev
+```
+
+## Purpose
+
+SG Expo Connect provides a professional digital presence for business events, helping attendees, exhibitors, sponsors, and professionals discover events and connect through valuable networking opportunities.
