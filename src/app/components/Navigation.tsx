@@ -81,25 +81,26 @@ export default function Navigation({ delay = 0 }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-[#FCFAF5] flex flex-col pt-28 px-8 pb-12 lg:hidden"
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-40 bg-[#FCFAF5] flex flex-col pt-48 px-8 pb-12 lg:hidden shadow-2xl"
           >
-            <ul className="flex flex-col gap-6">
+            <ul className="flex flex-col gap-8">
               {navLinks.map((item, idx) => {
                 const isActive = location.pathname === item.path;
                 return (
                   <motion.li
                     key={item.name}
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: 0.1 + idx * 0.05, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <Link
                       to={item.path}
-                      className={`text-3xl font-bold tracking-tight transition-colors ${isActive ? 'text-[#0A1931]' : 'text-[#0A1931]/40 hover:text-[#0A1931]'}`}
+                      onClick={() => setMenuOpen(false)}
+                      className={`text-2xl sm:text-3xl font-sans font-semibold tracking-wide transition-all duration-300 block ${isActive ? 'text-[#D4AF37] translate-x-2' : 'text-[#0A1931] hover:text-[#D4AF37] hover:translate-x-2'}`}
                     >
                       {item.name}
                     </Link>
@@ -107,9 +108,18 @@ export default function Navigation({ delay = 0 }) {
                 );
               })}
             </ul>
-            <div className="mt-auto">
-              <p className="text-gray-400 text-sm">© {new Date().getFullYear()} SG Expo Connect</p>
-            </div>
+
+            {/* Upgraded Mobile Footer */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+              className="mt-auto border-t border-gray-200 pt-8"
+            >
+              <p className="text-[#0A1931] font-bold text-lg mb-1">SG Expo Connect</p>
+              <p className="text-gray-500 text-sm mb-6">Connecting Business. Connecting People.</p>
+              <p className="text-gray-400 text-xs">© {new Date().getFullYear()} All Rights Reserved</p>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
