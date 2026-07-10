@@ -191,7 +191,7 @@ export default function AboutUs() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1: Our Purpose */}
-            <div className="relative w-full h-[450px] rounded-3xl overflow-hidden group cursor-pointer  hover:shadow-lg transition-all duration-500">
+            <div className="relative w-full h-[450px] rounded-3xl overflow-hidden group cursor-pointer shadow-sm hover:shadow-ml transition-all duration-500">
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1TfDnwptbOzm9ZIEEzrElPwmzUW4pEPuRwrNuyOWPsg&s=10"
                 alt="Our Purpose"
