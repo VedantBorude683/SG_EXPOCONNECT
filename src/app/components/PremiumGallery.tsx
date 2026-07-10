@@ -4,6 +4,11 @@ import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
+    title: "Exhibition",
+    description: "Showcase your brand globally through masterfully organized and heavily attended trade exhibitions.",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdgJW-r9rlV1vAlGk1K4nnE5xdmVEWsQbgHLODqF5SRLkDZWETd3BxDSo&s=10"
+  },
+  {
     title: "Conference",
     description: "Host world-class conferences that inspire, educate, and bring industry leaders together under one roof.",
     image: "https://cdn.prod.website-files.com/637391ec846652083583cb2d/63c66e42aa3524e7199a77d1_conference%20atmosphere.jpg"
@@ -22,11 +27,6 @@ const services = [
     title: "B2B Meetings",
     description: "Drive your business forward with highly targeted networking and strategic B2B meeting setups.",
     image: "https://img.magnific.com/free-photo/business-meeting-office_1268-21523.jpg?semt=ais_hybrid&w=740&q=80"
-  },
-  {
-    title: "Exhibition",
-    description: "Showcase your brand globally through masterfully organized and heavily attended trade exhibitions.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdgJW-r9rlV1vAlGk1K4nnE5xdmVEWsQbgHLODqF5SRLkDZWETd3BxDSo&s=10"
   }
 ];
 
