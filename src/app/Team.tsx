@@ -58,7 +58,7 @@ export default function Team() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-bold text-[#0A1931] mb-6"
+            className="text-5xl md:text-6xl font-bold text-yellow-600 mb-6"
           >
             Meet our team
           </motion.h2>
@@ -87,6 +87,7 @@ export default function Team() {
 
             const imageClass =
               member.name === 'Manas Gomes' ? 'w-full h-[500px] object-cover object-top block' :
+              member.name === 'Sujoy Gomes' ? 'w-full max-lg:h-[400px] max-lg:object-cover max-lg:object-top lg:h-auto block' :
                 'w-full h-auto block';
 
             return (
@@ -109,17 +110,17 @@ export default function Team() {
                 </div>
 
                 {/* Text Container */}
-                <div className={`flex flex-col justify-center ${(member.name === "Manas Gomes" || member.name === "Bharati Mera")
+                <div className={`flex flex-col justify-center max-lg:items-center max-lg:text-center ${(member.name === "Manas Gomes" || member.name === "Bharati Mera")
                   ? 'lg:order-first lg:items-end lg:text-right'
                   : isOdd ? 'lg:order-first lg:pl-12 xl:pl-20' : 'lg:pr-12 xl:pr-20'
                   }`}>
-                  <h3 className="text-yellow-600 text-lg md:text-2xl font-bold tracking-widest uppercase mb-3">
+                  <h3 className="text-yellow-600 text-lg md:text-2xl lg:text-xl xl:text-2xl font-bold tracking-widest uppercase mb-3">
                     {member.role}
                   </h3>
-                  <h4 className="text-4xl font-serif font-bold text-[#0A1931] mb-6">
+                  <h4 className="text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] mb-4 lg:mb-6">
                     {member.name}
                   </h4>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-lg:max-w-xl">
                     {member.description}
                   </p>
                 </div>
