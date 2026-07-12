@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { X } from 'lucide-react';
 import Footer from './components/Footer';
 import maharashtraexhibition from "../assets/maharashtraexhitbition.png";
+import leadersIndiaExhibition from "../assets/leaders_india_exhibition.png";
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<{ name: string; category: string; description: string; image: string } | null>(null);
@@ -18,13 +19,13 @@ export default function ProjectsPage() {
       name: "Leader's in India Exhibition",
       category: "Corporate Summits",
       description: "An exclusive industry conference uniting top corporate decision-makers and government bodies under one roof to foster leadership partnerships and drive massive economic growth across diverse sectors.",
-      image: "https://images.unsplash.com/photo-1556761175-5973dc0f32d7?q=80&w=2070&auto=format&fit=crop"
+      image: leadersIndiaExhibition
     },
     {
       name: "Festival of Bharat Exhibition",
       category: "Cultural Events",
       description: "Delivering an end-to-end event management solution that bridges traditional artisanship with modern commerce, creating meaningful opportunities for cultural enterprises and global sponsors.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSHZ_mBaciZ03kojnUAGcm5v9AzOfrXv5W98Eai5g53Q&s=10"
+      image: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=2069&auto=format&fit=crop"
     },
     {
       name: "Hospital Build & Infrastructure Exhibition",
@@ -36,7 +37,7 @@ export default function ProjectsPage() {
       name: "Medical Fair India Exhibition",
       category: "Medical Tech",
       description: "A premier knowledge-sharing forum and exhibition bringing together medical tech innovators and industry experts to foster collaboration and showcase breakthrough healthcare solutions.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM2lS6Q0FKble2PVGz0qBgH0eg2Eeoa-PdGc_027KhTUf3bZpMEYmgRww&s=10"
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Plastvision Arabia Exhibition",
@@ -54,13 +55,13 @@ export default function ProjectsPage() {
       name: "Fensterbau Frontale Exhibition",
       category: "Architecture",
       description: "Providing end-to-end management for the premier architectural trade show, uniting global facade and window technology leaders through roundtable discussions and impactful exhibitions.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw1_mO-r_IeIA45ysDKYacadt4pT34Pav5yEKlFKeeUw&s=10"
+      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Food Hospitality World Exhibition",
       category: "Hospitality",
       description: "Creating an elite business platform that connects premium hospitality brands with global suppliers, driving meaningful partnerships and massive growth within the hotelier industry.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1aRrf6_vfZ-5z_0sfse_dOCeYnzr-D0hyf7hZh_PNMQ&s=10"
+      image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Medical Electronic Innovation Exhibition",
@@ -78,7 +79,7 @@ export default function ProjectsPage() {
       name: "Central Beauty Asia Exhibition",
       category: "Cosmetics & Wellness",
       description: "A highly successful B2B networking event uniting global cosmetics brands and wellness innovators, delivering significant commercial value to sponsors and salon decision-makers.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkQJYSwDIIdBSsSIcbWbHhptx7GqoTJ5UZ_Sq5ne2OnBiYmv_ehcQHZSjT&s=10"
+      image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=2087&auto=format&fit=crop"
     },
     {
       name: "WETEX Exhibition Dubai",
@@ -114,7 +115,7 @@ export default function ProjectsPage() {
       name: "Cement Exhibition India",
       category: "Heavy Industry",
       description: "(Currently Working) Organizing a massive heavy industry exhibition, seamlessly connecting top cement manufacturers with infrastructure decision-makers for sustainable national growth.",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsmrSWSLGACXYp9YSL4bHheO3rszsOSEOeQ4dKGsxc8l3kHuNoBmRwWP0&s=10"
+      image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=2076&auto=format&fit=crop"
     },
     {
       name: "Cement Exhibition Dubai",
@@ -193,11 +194,11 @@ export default function ProjectsPage() {
               className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-[420px] cursor-pointer"
             >
               {/* Image Section */}
-              <div className="h-[200px] w-full overflow-hidden relative">
+              <div className="h-[220px] w-full overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
 
@@ -232,11 +233,11 @@ export default function ProjectsPage() {
             </button>
 
             {/* Left Side (Image) */}
-            <div className="w-full md:w-1/2 h-[300px] md:h-full">
+            <div className="w-full md:w-1/2 min-h-[300px] md:min-h-[450px] relative overflow-hidden flex-shrink-0">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.name}
-                className="w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover object-center"
               />
             </div>
 
@@ -248,13 +249,9 @@ export default function ProjectsPage() {
               <h2 className="text-3xl font-serif font-bold text-[#0A1931] mb-6">
                 {selectedProject.name}
               </h2>
-              <p className="text-gray-600 leading-relaxed text-lg mb-8">
+              <p className="text-gray-600 leading-relaxed text-lg">
                 {selectedProject.description}
               </p>
-
-              <button className="bg-[#0A1931] text-white px-8 py-3 rounded-full font-bold hover:bg-yellow-600 transition-colors self-start">
-                Inquire About This Project
-              </button>
             </div>
 
           </div>
