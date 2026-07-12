@@ -25,7 +25,7 @@ export default function ProjectsPage() {
       name: "Festival of Bharat Exhibition",
       category: "Cultural Events",
       description: "Delivering an end-to-end event management solution that bridges traditional artisanship with modern commerce, creating meaningful opportunities for cultural enterprises and global sponsors.",
-      image: "https://images.unsplash.com/photo-1514222134-b57cbb8ce073?q=80&w=2069&auto=format&fit=crop"
+      image: "https://th-i.thgim.com/public/incoming/l67bs5/article66214623.ece/alternates/FREE_1200/02frkathakali4.JPG"
     },
     {
       name: "Hospital Build & Infrastructure Exhibition",
@@ -37,7 +37,7 @@ export default function ProjectsPage() {
       name: "Medical Fair India Exhibition",
       category: "Medical Tech",
       description: "A premier knowledge-sharing forum and exhibition bringing together medical tech innovators and industry experts to foster collaboration and showcase breakthrough healthcare solutions.",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop"
+      image: "https://www.messe-duesseldorf.de/cache/pica/1/5/5/9/4/15001654083400/MEDIKABAZAAR.jpg"
     },
     {
       name: "Plastvision Arabia Exhibition",
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
       name: "Fensterbau Frontale Exhibition",
       category: "Architecture",
       description: "Providing end-to-end management for the premier architectural trade show, uniting global facade and window technology leaders through roundtable discussions and impactful exhibitions.",
-      image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?q=80&w=2070&auto=format&fit=crop"
+      image: "https://www.glassonweb.com/sites/default/files/styles/6/public/news/2023/fensterbau-frontale-85-percent-of-exhibition-space-already-booked.jpg?itok=zhTVexxZ"
     },
     {
       name: "Food Hospitality World Exhibition",
@@ -73,7 +73,7 @@ export default function ProjectsPage() {
       name: "Construct Maharashtra Exhibition",
       category: "Infrastructure",
       description: "An expertly planned regional infrastructure exhibition connecting government bodies and leading real estate companies to drive massive development opportunities across the state.",
-      image: maharashtraexhibition
+      image: "https://highways.today/wp-content/uploads/2020/10/about-2.jpg"
     },
     {
       name: "Central Beauty Asia Exhibition",

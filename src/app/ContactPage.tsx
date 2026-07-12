@@ -39,7 +39,7 @@ export default function ContactPage() {
           </span>
           <h1 className="font-serif font-bold text-[#0A1931] text-5xl md:text-6xl lg:text-7xl tracking-tight leading-tight">
             Let's Build Something{' '}
-            <span className="italic text-yellow-600 font-light">Exceptional.</span>
+            <span className="font-bold text-yellow-600 font-light">Exceptional.</span>
           </h1>
           <p className="text-gray-500 text-lg font-light mt-6 max-w-2xl mx-auto leading-relaxed">
             Have an exhibition or event in mind? We'd love to hear about it. Reach out and our team will get back to you promptly with a tailored proposal.

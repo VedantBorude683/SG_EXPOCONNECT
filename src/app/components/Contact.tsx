@@ -37,21 +37,7 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
 
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-14"
-        >
-          <span className="inline-block text-yellow-600 font-semibold text-sm tracking-widest uppercase mb-4">
-            Get In Touch
-          </span>
-          <h2 className="font-serif font-bold text-[#0A1931] text-4xl md:text-5xl lg:text-6xl tracking-tight">
-            Let's Bring Your Event <span className="italic text-yellow-600 font-light">to Life.</span>
-          </h2>
-        </motion.div>
+
 
         {/* Main 2-Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
