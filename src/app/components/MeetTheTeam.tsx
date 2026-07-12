@@ -20,11 +20,13 @@ export default function MeetTheTeam() {
 
   const renderCard = (member: any, idx: number) => (
     <div key={idx} className="relative h-[450px] w-full rounded-3xl overflow-hidden group shadow-lg">
-      <img
-        src={member.image}
-        alt={member.name}
-        className={`absolute inset-0 w-full h-full object-cover ${member.position} group-hover:scale-105 transition-transform duration-700`}
-      />
+      <div className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105">
+        <img
+          src={member.image}
+          alt={member.name}
+          className={`w-full h-full object-cover ${member.position} ${member.name === 'Piyush Gomes' ? 'scale-125' : ''}`}
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931] via-[#0A1931]/60 to-transparent opacity-90 h-1/2 mt-auto" />
       <div className="absolute bottom-0 left-0 w-full p-6 flex flex-col justify-end z-20">
         <h3 className="text-white font-extrabold text-4xl mb-2 drop-shadow-md">{member.name}</h3>

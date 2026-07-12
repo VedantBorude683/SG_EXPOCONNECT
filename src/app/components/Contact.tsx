@@ -14,7 +14,7 @@ const benefits = [
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -124,6 +124,21 @@ export default function Contact() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="Email address"
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-sm font-semibold text-[#0A1931]">
+                    Phone Number <span className="text-yellow-600">*</span>
+                  </label>
+                  <input
+                    name="phone"
+                    type="tel"
+                    required
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Phone number"
                     className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
                   />
                 </div>

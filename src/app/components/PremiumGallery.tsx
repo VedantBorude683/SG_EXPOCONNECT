@@ -84,10 +84,6 @@ export default function PremiumGallery(props: any) {
                   {service.description}
                 </p>
 
-                {/* Action Link */}
-                <span className="text-yellow-600 font-bold text-sm tracking-wide uppercase flex items-center group-hover:text-[#0A1931] transition-colors">
-                  Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                </span>
               </div>
 
             </motion.div>

@@ -89,7 +89,7 @@ export default function Footer() {
             </p>
 
             <a href="tel:09594546757" className="text-yellow-600 hover:text-yellow-500 transition-colors">
-              +91 09594546757
+              +91 9594546757
             </a>
           </div>
         </div>

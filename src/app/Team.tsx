@@ -13,122 +13,150 @@ export default function Team() {
     {
       name: "Jaishree Gomes",
       role: "Founder",
-
-      image: p3
+      image: p3,
+      bio: "Visionary leader with a proven track record of establishing premier global trade exhibitions and fostering international business partnerships."
     },
     {
       name: "Sujoy Gomes",
       role: "Founder & Managing Director",
-
-      image: leader1
+      image: leader1,
+      bio: "Driving strategic growth and operational excellence, ensuring every event delivers massive commercial value and flawless execution."
     },
     {
       name: "Piyush Gomes",
       role: "Director",
-
-      image: p4
+      image: p4,
+      bio: "Spearheading corporate innovation and expanding the company's footprint across key international markets and emerging industries."
     },
     {
       name: "Bharati Mera",
       role: "Exhibition Head",
-
-      image: p2
+      image: p2,
+      bio: "Leading global exhibition strategies and execution with over a decade of industry expertise."
     },
     {
       name: "Nageshwari Tambe",
       role: "Finance Manager",
-
-      image: p5
+      image: p5,
+      bio: "Overseeing financial operations and strategic investments to drive sustainable company growth."
     },
     {
       name: "Manas Gomes",
       role: "Office Manager",
-
-      image: p6
+      image: p6,
+      bio: "Ensuring seamless day-to-day operations and fostering a collaborative corporate environment."
     }
   ];
 
+  const tier1 = team.slice(0, 3);
+  const tier2 = team.slice(3);
+
   return (
     <main className="min-h-screen bg-[#FCFAF5] text-[#0A1931] overflow-hidden font-sans selection:bg-[#D4AF37] selection:text-white">
-
-      <section className="bg-[#FCFAF5] pt-36 pb-16 px-6 font-sans relative z-10 overflow-hidden">
-        {/* 1. Page Header & Intro Description */}
-        <div className="max-w-4xl mx-auto text-center mb-24">
+      <section className="bg-[#FCFAF5] py-24 px-6 relative z-10">
+        
+        {/* Header Wrapper */}
+        <div className="max-w-4xl mx-auto text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-6xl font-bold text-yellow-600 mb-6"
+            className="text-5xl md:text-6xl font-serif font-bold text-[#0A1931] mb-6"
           >
-            Meet our team
+            Meet our global leadership.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-600 leading-relaxed"
+            className="text-lg text-gray-600 leading-relaxed"
           >
-            Behind every world-class exhibition is a team of visionary leaders and relentless execution experts. Get to know the minds driving SG ExpoConnect.
+            A dedicated team of industry veterans, innovators, and execution experts driving the future of international trade exhibitions.
           </motion.p>
         </div>
 
-        {/* 3. The Alternating Rows (Zig-Zag UI) */}
-        <div className="max-w-7xl mx-auto px-6 pb-32 flex flex-col gap-24">
-          {team.map((member, index) => {
-            const isOdd = index % 2 !== 0;
-            const maxWidthClass =
-              member.name === 'Manas Gomes' ? 'max-w-[350px]' :
-                member.name === 'Sujoy Gomes' ? 'max-w-[490px]' :
-                  member.name === 'Piyush Gomes' ? 'max-w-[390px]' :
-                    member.name === 'Nageshwari Tambe' ? 'max-w-[390px]' :
-                      member.name === 'Bharati Mera' ? 'max-w-[370px]' :
-                        'max-w-[380px]';
-
-            const imageClass =
-              member.name === 'Manas Gomes' ? 'w-full h-[500px] object-cover object-top block' :
-              member.name === 'Sujoy Gomes' ? 'w-full max-lg:h-[400px] max-lg:object-cover max-lg:object-top lg:h-auto block' :
-                'w-full h-auto block';
-
-            return (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-              >
-
-                {/* Image Container */}
-                <div className={`relative w-full ${maxWidthClass} mx-auto rounded-[2rem] overflow-hidden shadow-xl ${isOdd ? 'lg:order-last' : ''}`}>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className={`${imageClass} hover:scale-105 transition-transform duration-700`}
-                  />
+        {/* Tier 1: Leadership Grid (Jaishree, Sujoy, Piyush) */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+          {tier1.map((member, idx) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
+            >
+              <div className="w-full h-[340px] overflow-hidden relative bg-gray-100">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1 items-center text-center lg:items-start lg:text-left">
+                <p className="text-xs md:text-sm font-bold tracking-widest text-yellow-600 uppercase mb-2">
+                  {member.role}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#0A1931] mb-4">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                  {member.bio}
+                </p>
+                <div className="mt-auto pt-4 border-t border-gray-100 w-full flex justify-center lg:justify-start">
+                  <span className="text-yellow-600 font-bold text-xs uppercase tracking-wider group-hover:text-[#0A1931] transition-colors">
+                    Connect on LinkedIn &rarr;
+                  </span>
                 </div>
-
-                {/* Text Container */}
-                <div className={`flex flex-col justify-center max-lg:items-center max-lg:text-center ${(member.name === "Manas Gomes" || member.name === "Bharati Mera")
-                  ? 'lg:order-first lg:items-end lg:text-right'
-                  : isOdd ? 'lg:order-first lg:pl-12 xl:pl-20' : 'lg:pr-12 xl:pr-20'
-                  }`}>
-                  <h3 className="text-yellow-600 text-lg md:text-2xl lg:text-xl xl:text-2xl font-bold tracking-widest uppercase mb-3">
-                    {member.role}
-                  </h3>
-                  <h4 className="text-3xl lg:text-4xl font-serif font-bold text-[#0A1931] mb-4 lg:mb-6">
-                    {member.name}
-                  </h4>
-                  <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-lg:max-w-xl">
-                    {member.description}
-                  </p>
-                </div>
-
-              </motion.div>
-            );
-          })}
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Tier 2: Department Heads Grid */}
+        <div className="max-w-7xl mx-auto px-6 mb-12 text-center lg:text-left">
+          <h3 className="text-3xl font-serif font-bold text-[#0A1931] border-b border-gray-200 pb-4">
+            Department Heads
+          </h3>
+        </div>
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
+          {tier2.map((member, idx) => (
+            <motion.div
+              key={member.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
+            >
+              <div className="w-full h-[280px] overflow-hidden relative bg-gray-100">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-8 flex flex-col flex-1 items-center text-center lg:items-start lg:text-left">
+                <p className="text-xs md:text-sm font-bold tracking-widest text-yellow-600 uppercase mb-2">
+                  {member.role}
+                </p>
+                <h3 className="text-xl md:text-2xl font-serif font-bold text-[#0A1931] mb-4">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
+                  {member.bio}
+                </p>
+                <div className="mt-auto pt-4 border-t border-gray-100 w-full flex justify-center lg:justify-start">
+                  <span className="text-yellow-600 font-bold text-xs uppercase tracking-wider group-hover:text-[#0A1931] transition-colors">
+                    Connect on LinkedIn &rarr;
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </section>
 
       <Footer />
