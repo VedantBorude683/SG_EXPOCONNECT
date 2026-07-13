@@ -7,6 +7,7 @@ import ProjectsPage from "./app/ProjectsPage.tsx";
 import ScrollToTop from "./app/components/ScrollToTop.tsx";
 import Navigation from "./app/components/Navigation.tsx";
 import ContactPage from "./app/ContactPage.tsx";
+import WhatsAppFloatingButton from "./app/components/WhatsAppFloatingButton.tsx";
 import "./styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -23,5 +24,6 @@ createRoot(document.getElementById("root")!).render(
       <Route path="/projects" element={<ProjectsPage />} />
       <Route path="/contact" element={<ContactPage />} />
     </Routes>
+    <WhatsAppFloatingButton />
   </BrowserRouter>
 );

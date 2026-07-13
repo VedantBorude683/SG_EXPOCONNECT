@@ -91,6 +91,10 @@ export default function Footer() {
             <a href="tel:09594546757" className="text-yellow-600 hover:text-yellow-500 transition-colors">
               +91 9594546757
             </a>
+            
+            <a href="mailto:admin@sgexpoconnect.com" className="text-yellow-600 hover:text-yellow-500 transition-colors">
+              admin@sgexpoconnect.com
+            </a>
           </div>
         </div>
 
