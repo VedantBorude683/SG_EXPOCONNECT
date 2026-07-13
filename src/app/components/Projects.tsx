@@ -1,7 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router';
+import { Download } from 'lucide-react';
 import leadersIndiaExhibition from "../../assets/leaders_india_exhibition.png";
+import project1 from "../../assets/project1.jpg";
+import project2 from "../../assets/project2.png";
+import brochurePdf from "../../assets/Brochure.pdf";
+import aseeBrochure from "../../assets/ASEE-brochure 2027.pdf";
 
 const topProjects = [
   {
@@ -46,7 +51,8 @@ export default function Projects() {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-[#FCFAF5] py-24 relative z-10 overflow-hidden">
+    <>
+      <section className="w-full bg-[#FCFAF5] py-24 relative z-10 overflow-hidden">
 
       <div className="max-w-7xl mx-auto px-6 relative z-20">
         <motion.div
@@ -104,5 +110,100 @@ export default function Projects() {
         </button>
       </div>
     </section>
+
+    {/* Current Projects Section */}
+    <section className="w-full bg-white py-24 px-6 relative overflow-hidden">
+        {/* Section Header */}
+        <div className="max-w-7xl mx-auto mb-16 border-b border-[#0A1931]/10 pb-8 flex flex-col items-start relative z-10">
+          <span className="text-yellow-600 text-sm font-bold tracking-widest uppercase mb-4">
+            Live & Upcoming
+          </span>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#0A1931]">
+            Our Current Projects
+          </h2>
+        </div>
+
+        {/* Asymmetrical 2-Card Grid */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+
+          {/* Card 1 — 7i-Gears (Portrait / Left-Right split) */}
+          <div className="lg:col-span-7 bg-[#FCFAF5] border border-gray-100 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col sm:flex-row h-auto sm:h-[500px] cursor-pointer">
+            <div className="w-full sm:w-[45%] relative overflow-hidden flex-shrink-0">
+              <img
+                src={project1}
+                alt="7i-Gears (EGY-AFRICA EXPOS)"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="w-full sm:w-[55%] p-6 lg:p-8 flex flex-col justify-start bg-white">
+              <span className="text-yellow-600 text-xs font-bold uppercase tracking-widest mb-2">
+                4th Edition • New Cairo, Egypt
+              </span>
+              <h3 className="text-xl font-bold text-[#0A1931] mb-3">
+                7i-Gears (EGY-AFRICA EXPOS)
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-4">
+                The Fourth Edition of 7i-Gears — the EGY-AFRICA EXPOS FOR ENGINEERING INDUSTRIES & INNOVATIONS. A premier platform for industrial progress and collaboration in the Africa-Egypt corridor.
+              </p>
+              <div className="flex flex-col gap-2 text-sm text-gray-600 mb-6">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0"></span>
+                  <span><strong className="text-[#0A1931]">Venue:</strong> Egypt International Exhibition Center</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0"></span>
+                  <span><strong className="text-[#0A1931]">Date:</strong> 28–30 November 2026</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 flex-shrink-0"></span>
+                  <span><strong className="text-[#0A1931]">Focus:</strong> Engineering Industries & Innovations</span>
+                </div>
+              </div>
+              <a
+                href={brochurePdf}
+                download
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-[#0A1931] px-4 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md w-max"
+              >
+                <Download size={14} /> Download Brochure
+              </a>
+            </div>
+          </div>
+
+          {/* Card 2 — ASEE-ASEAN (Landscape / Top-Bottom stack) */}
+          <div className="lg:col-span-5 bg-[#FCFAF5] border border-gray-100 rounded-3xl overflow-hidden hover:shadow-xl transition-shadow duration-300 group flex flex-col cursor-pointer">
+            <div className="w-full relative overflow-hidden">
+              <img
+                src={project2}
+                alt="ASEE-ASEAN Smart Energy Expo"
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-6 flex flex-col flex-1 bg-white">
+              <span className="text-yellow-600 text-xs font-bold uppercase tracking-widest mb-2">
+                Mar 17-19, 2027 • Bangkok, Thailand
+              </span>
+              <h3 className="text-2xl font-bold text-[#0A1931] mb-3">
+                ASEE-ASEAN Smart Energy Expo
+              </h3>
+              <p className="text-gray-600 text-sm line-clamp-3 mb-6">
+                A major industry event focused on Solar PV, Energy Storage, and E-Mobility. Anticipating 20,000+ visitors and 500+ exhibitors to accelerate deal-making in Southeast Asia's rapid energy transition.
+              </p>
+              <div className="mt-auto">
+                <a
+                  href={aseeBrochure}
+                  download
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-400 text-[#0A1931] px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-sm hover:shadow-md w-max"
+                >
+                  <Download size={16} /> Download Brochure
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </>
   );
 }
