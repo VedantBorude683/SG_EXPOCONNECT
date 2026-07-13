@@ -177,7 +177,7 @@ export default function Contact() {
                   type="submit"
                   className="w-full py-4 bg-[#0A1931] hover:bg-yellow-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl transition-colors duration-300 shadow-lg hover:shadow-yellow-500/20 mt-2"
                 >
-                  Send Me a Quote
+                  Send Message
                 </button>
               </form>
             )}

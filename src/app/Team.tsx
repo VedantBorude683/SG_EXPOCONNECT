@@ -24,7 +24,7 @@ export default function Team() {
     },
     {
       name: "Piyush Gomes",
-      role: "Director",
+      role: "COO Chief operating officer",
       image: p4,
       bio: "Spearheading corporate innovation and expanding the company's footprint across key international markets and emerging industries."
     },
@@ -63,7 +63,7 @@ export default function Team() {
             viewport={{ once: true }}
             className="text-5xl md:text-6xl font-serif font-bold text-[#0A1931] mb-6"
           >
-            Meet our global leadership.
+            Meet the experts driving our success.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

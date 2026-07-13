@@ -86,7 +86,7 @@ export default function AboutUs() {
             {/* Left Column (Single Clean Image) */}
             <div className="relative w-full flex items-center justify-center">
               <img
-                src={aboutPhoto}
+                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop"
                 alt="About SG Expo Connect"
                 className="w-full h-[300px] sm:h-[400px] lg:h-[600px] object-cover rounded-3xl lg:rounded-[2rem] shadow-xl"
               />
