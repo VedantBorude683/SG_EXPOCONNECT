@@ -12,7 +12,7 @@ export default function MeetTheTeam() {
   const team = [
     { name: "Jaishree Gomes", role: "Founder", image: p3, position: "object-center" },
     { name: "Sujoy Gomes", role: "Founder & Managing Director", image: leader1, position: "object-center" },
-    { name: "Piyush Gomes", role: "COO Chief operating officer", image: p4, position: "object-center" },
+    { name: "Piyush Gomes", role: "Chief Managing Director", image: p4, position: "object-center" },
     { name: "Bharati Mera", role: "Exhibition Head", image: p2, position: "object-center" },
     { name: "Nageshwari Tambe", role: "Finance Manager", image: p5, position: "object-center" },
     { name: "Manas Gomes", role: "Office Manager", image: p6, position: "object-[10%_top]" }

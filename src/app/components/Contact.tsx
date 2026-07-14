@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle, Sparkles } from 'lucide-react';
-
+import emailjs from '@emailjs/browser';
 const benefits = [
   'Personalized exhibition planning',
   'Corporate, trade & custom events',
@@ -13,7 +13,9 @@ const benefits = [
 ];
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -22,7 +24,28 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current!,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          setIsSubmitting(false);
+          setIsSuccess(true);
+          setForm({ name: '', email: '', phone: '', company: '', message: '' });
+          setTimeout(() => setIsSuccess(false), 5000);
+        },
+        (error) => {
+          setIsSubmitting(false);
+          alert('Failed to send the message, please try again.');
+          console.error('EmailJS Error:', error);
+        }
+      );
   };
 
   return (
@@ -88,99 +111,97 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="bg-white rounded-3xl p-8 md:p-12 shadow-[0_8px_40px_rgba(10,25,49,0.08)] border border-gray-100"
           >
-            {submitted ? (
-              <div className="h-full flex flex-col items-center justify-center text-center py-12 gap-5">
-                <CheckCircle size={56} className="text-green-500" />
-                <h3 className="text-2xl font-bold text-[#0A1931]">Message Sent!</h3>
-                <p className="text-gray-500 text-base max-w-sm">
-                  Thank you for reaching out. Our team will get back to you within 24 hours.
-                </p>
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-[#0A1931]">
+                  Name <span className="text-yellow-600">*</span>
+                </label>
+                <input
+                  name="name"
+                  type="text"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Full name"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
+                />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-[#0A1931]">
-                    Name <span className="text-yellow-600">*</span>
-                  </label>
-                  <input
-                    name="name"
-                    type="text"
-                    required
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Full name"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
-                  />
-                </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-[#0A1931]">
-                    Email <span className="text-yellow-600">*</span>
-                  </label>
-                  <input
-                    name="email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="Email address"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
-                  />
-                </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-[#0A1931]">
+                  Email <span className="text-yellow-600">*</span>
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email address"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
+                />
+              </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-[#0A1931]">
-                    Phone Number <span className="text-yellow-600">*</span>
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={handleChange}
-                    placeholder="Phone number"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
-                  />
-                </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-[#0A1931]">
+                  Phone Number <span className="text-yellow-600">*</span>
+                </label>
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  value={form.phone}
+                  onChange={handleChange}
+                  placeholder="Phone number"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
+                />
+              </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-[#0A1931]">
-                    Company <span className="text-yellow-600">*</span>
-                  </label>
-                  <input
-                    name="company"
-                    type="text"
-                    required
-                    value={form.company}
-                    onChange={handleChange}
-                    placeholder="Company name"
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
-                  />
-                </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-[#0A1931]">
+                  Company <span className="text-yellow-600">*</span>
+                </label>
+                <input
+                  name="company"
+                  type="text"
+                  required
+                  value={form.company}
+                  onChange={handleChange}
+                  placeholder="Company name"
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all"
+                />
+              </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-[#0A1931]">
-                    Message <span className="text-yellow-600">*</span>
-                  </label>
-                  <textarea
-                    name="message"
-                    required
-                    rows={4}
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your event..."
-                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all resize-none"
-                  />
-                </div>
+              <div className="flex flex-col gap-1.5">
+                <label className="text-sm font-semibold text-[#0A1931]">
+                  Message <span className="text-yellow-600">*</span>
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your event..."
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-[#FCFAF5] text-[#0A1931] text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500/10 transition-all resize-none"
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-4 bg-[#0A1931] hover:bg-yellow-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl transition-colors duration-300 shadow-lg hover:shadow-yellow-500/20 mt-2"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-[#0A1931] hover:bg-yellow-600 text-white font-bold text-sm tracking-widest uppercase rounded-xl transition-all duration-300 shadow-lg hover:shadow-yellow-500/20 mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
+              
+              {isSuccess && (
+                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center justify-center gap-3 text-green-700 animate-in fade-in slide-in-from-bottom-2">
+                  <CheckCircle size={20} />
+                  <span className="text-sm font-medium">Message sent successfully! We'll be in touch soon.</span>
+                </div>
+              )}
+            </form>
           </motion.div>
 
         </div>

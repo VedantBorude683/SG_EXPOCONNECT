@@ -26,7 +26,7 @@ export default function Team() {
     },
     {
       name: "Piyush Gomes",
-      role: "COO Chief operating officer",
+      role: "Chief Managing Director",
       image: p4,
       position: "object-center",
       bio: "Spearheading corporate innovation and expanding the company's footprint across key international markets and emerging industries."
@@ -99,7 +99,7 @@ export default function Team() {
 
         {/* The Pyramid Layout 1-1-1-3 */}
         <div className="flex flex-col items-center gap-12 md:gap-16 max-w-7xl mx-auto mt-16">
-          
+
           {/* Row 1 (Top Boss) */}
           <motion.div
             className="w-full max-w-[420px]"
