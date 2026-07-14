@@ -54,16 +54,30 @@ export default function Team() {
     }
   ];
 
-  // Reordering Tier 1: Sujoy (Left), Jaishree (Center), Piyush (Right)
-  const tier1 = [team[1], team[0], team[2]];
-  const tier2 = team.slice(3);
+  const renderCard = (member: any, idx: number) => (
+    <div key={idx} className="relative h-[450px] md:h-[500px] w-full rounded-[2rem] overflow-hidden group shadow-[0_8px_40px_rgba(10,25,49,0.12)] text-left">
+      <div className="absolute inset-0 w-full h-full transition-transform duration-700 group-hover:scale-105">
+        <img
+          src={member.image}
+          alt={member.name}
+          className={`w-full h-full object-cover ${member.position} ${member.name === 'Piyush Gomes' ? 'scale-125' : ''}`}
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1931] via-[#0A1931]/60 to-transparent opacity-90 h-[60%] mt-auto" />
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 flex flex-col justify-end z-20">
+        <h3 className="text-white font-extrabold text-3xl md:text-4xl mb-2 drop-shadow-md">{member.name}</h3>
+        <p className="text-yellow-400 font-semibold text-sm md:text-base uppercase tracking-widest drop-shadow-sm mb-3">{member.role}</p>
+        <p className="text-gray-200 text-sm leading-relaxed">{member.bio}</p>
+      </div>
+    </div>
+  );
 
   return (
     <main className="min-h-screen bg-[#FCFAF5] text-[#0A1931] overflow-hidden font-sans selection:bg-[#D4AF37] selection:text-white">
       <section className="bg-[#FCFAF5] py-24 px-6 relative z-10">
 
         {/* Header Wrapper */}
-        <div className="max-w-4xl mx-auto text-center mb-20">
+        <div className="max-w-4xl mx-auto text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,75 +97,54 @@ export default function Team() {
           </motion.p>
         </div>
 
-        {/* Tier 1: Leadership Grid (Sujoy, Jaishree, Piyush) */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-center mb-24">
-          {tier1.map((member, idx) => {
-            const isCenter = member.name === "Jaishree Gomes";
-            return (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer ${isCenter ? 'transform lg:scale-105 z-10 shadow-lg' : 'transform lg:scale-95 opacity-95 hover:opacity-100'}`}
-              >
-                <div className={`w-full overflow-hidden relative bg-gray-100 ${isCenter ? 'aspect-[4/5]' : 'aspect-square'}`}>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className={`w-full h-full object-cover ${member.position} group-hover:scale-105 transition-transform duration-500`}
-                  />
-                </div>
-                <div className="p-8 flex flex-col flex-1 items-center text-center">
-                  <p className="text-sm md:text-base font-bold tracking-widest text-yellow-600 uppercase mb-2">
-                    {member.role}
-                  </p>
-                  <h3 className={`font-serif font-bold text-[#0A1931] mb-4 ${isCenter ? 'text-3xl' : 'text-2xl'}`}>
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    {member.bio}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        {/* The Pyramid Layout 1-1-1-3 */}
+        <div className="flex flex-col items-center gap-12 md:gap-16 max-w-7xl mx-auto mt-16">
+          
+          {/* Row 1 (Top Boss) */}
+          <motion.div
+            className="w-full max-w-[420px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {renderCard(team[0], 0)}
+          </motion.div>
 
-        {/* Tier 2: Department Heads Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-16">
-          {tier2.map((member, idx) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group cursor-pointer"
-            >
-              <div className="w-full aspect-[4/5] overflow-hidden relative bg-gray-100">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className={`w-full h-full object-cover ${member.position} group-hover:scale-105 transition-transform duration-500`}
-                />
-              </div>
-              <div className="p-8 flex flex-col flex-1 items-center text-center">
-                <p className="text-sm md:text-base font-bold tracking-widest text-yellow-600 uppercase mb-2">
-                  {member.role}
-                </p>
-                <h3 className="text-xl md:text-2xl font-serif font-bold text-[#0A1931] mb-4">
-                  {member.name}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed flex-1">
-                  {member.bio}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+          {/* Row 2 (Second in Command) */}
+          <motion.div
+            className="w-full max-w-[420px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {renderCard(team[1], 1)}
+          </motion.div>
 
+          {/* Row 3 (Third in Command) */}
+          <motion.div
+            className="w-full max-w-[420px]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {renderCard(team[2], 2)}
+          </motion.div>
+
+          {/* Row 4 (The Department Heads - 3 cols) */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            {team.slice(3).map((member, idx) => renderCard(member, idx + 3))}
+          </motion.div>
+
+        </div>
       </section>
 
       <Footer />
