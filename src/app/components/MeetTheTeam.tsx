@@ -6,13 +6,13 @@ import p4 from '../../assets/p4.png';
 import p5 from '../../assets/p5.jpg';
 import leader1 from '../../assets/leader1.jpg';
 import leader2 from '../../assets/leader2.jpg';
-import p6 from '../../assets/p6.jpg';
+import p6 from '../../assets/p6.png';
 
 export default function MeetTheTeam() {
   const team = [
     { name: "Jaishree Gomes", role: "Founder", image: p3, position: "object-center" },
     { name: "Sujoy Gomes", role: "Founder & Managing Director", image: leader1, position: "object-center" },
-    { name: "Piyush Gomes", role: "Chief Managing Director", image: p4, position: "object-center" },
+    { name: "Piyush Gomes", role: "Chief Operating Officer", image: p4, position: "object-center" },
     { name: "Bharati Mera", role: "Exhibition Head", image: p2, position: "object-center" },
     { name: "Nageshwari Tambe", role: "Finance Manager", image: p5, position: "object-center" },
     { name: "Manas Gomes", role: "Office Manager", image: p6, position: "object-[10%_top]" }

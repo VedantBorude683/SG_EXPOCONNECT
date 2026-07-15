@@ -6,7 +6,7 @@ import p3 from '../assets/p3.jpg';
 import p4 from '../assets/p4.png';
 import p5 from '../assets/p5.jpg';
 import leader1 from '../assets/leader1.jpg';
-import p6 from '../assets/p6.jpg';
+import p6 from '../assets/p6.png';
 import saadImg from '../assets/Saad1.png';
 import rahulImg from '../assets/rahul1.png';
 import sahilImg from '../assets/Sahil1.png';
@@ -32,7 +32,7 @@ export default function Team() {
     },
     {
       name: "Piyush Gomes",
-      role: "Chief Managing Director",
+      role: "Chief Operating Officer Founder & Ceo - Ventix Global",
       image: p4,
       position: "object-center",
       bio: "Spearheading corporate innovation and expanding the company's footprint across key international markets and emerging industries."
@@ -202,25 +202,15 @@ export default function Team() {
         {/* Division 1: Ventix Global */}
         <div className="max-w-7xl mx-auto px-6 mb-24">
 
-          {/* Header Row: Logo + Leader Card */}
-          <div className="flex flex-col md:flex-row items-center justify-start gap-12 md:gap-24 mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="w-full max-w-[420px] flex justify-center md:justify-start"
-            >
-              <img src={ventixGlobalLogo} alt="Ventix Global Logo" className="w-full h-auto object-contain mix-blend-multiply" />
-            </motion.div>
-
+          {/* Header Row: Logo */}
+          <div className="flex flex-col items-center justify-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="w-full max-w-[420px] transform transition-all duration-300"
+              className="w-full max-w-[500px] flex justify-center"
             >
-              {renderCard(team[2], 91)}
+              <img src={ventixGlobalLogo} alt="Ventix Global Logo" className="w-full h-auto object-contain mix-blend-multiply" />
             </motion.div>
           </div>
 
@@ -232,25 +222,17 @@ export default function Team() {
         {/* Division 2: Ventix Studio */}
         <div className="max-w-7xl mx-auto px-6 mb-24">
 
-          {/* Header Row: Logo + Leader Card */}
-          <div className="flex flex-col md:flex-row items-center justify-start gap-12 md:gap-24 mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="w-full max-w-[420px] flex justify-center md:justify-start"
-            >
-              <img src={ventixStudiosLogo} alt="Ventix Studios Logo" className="w-full h-auto object-contain mix-blend-multiply" />
-            </motion.div>
-
+          {/* Header Row: Logo */}
+          <div className="flex flex-col items-center justify-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="w-full max-w-[420px] transform transition-all duration-300"
+              className="w-full max-w-[420px] flex justify-center"
             >
-              {renderCard(team[2], 93)}
+              <div className="w-full overflow-hidden" style={{ height: '72%' }}>
+                <img src={ventixStudiosLogo} alt="Ventix Studios Logo" className="w-full h-auto object-contain object-top mix-blend-multiply" />
+              </div>
             </motion.div>
           </div>
 

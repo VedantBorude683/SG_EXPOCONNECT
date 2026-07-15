@@ -31,7 +31,7 @@ export default function Footer() {
             <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
               <Facebook size={15} />
             </a>
-            <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
+            <a href="https://www.instagram.com/sgexpoconnectindiapvtltd?igsh=MWQ5dWNveDBxbXVrZw==" target="_blank" rel="noopener noreferrer" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
               <Instagram size={15} />
             </a>
             <a href="#" style={{ WebkitTapHighlightColor: 'transparent' }} className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-yellow-600 hover:text-yellow-600 active:text-yellow-600 transition-all cursor-pointer">
@@ -65,7 +65,7 @@ export default function Footer() {
             {[
               'Exhibition Space Selling',
               'Conference Selling',
-              'Awarda Selling',
+              'Award Selling',
               'Pavallion Selling',
               'Roundtable Selling',
               'B2B meeting selling',
@@ -91,7 +91,7 @@ export default function Footer() {
             <a href="tel:09594546757" className="text-yellow-600 hover:text-yellow-500 transition-colors">
               +91 9594546757
             </a>
-            
+
             <a href="mailto:admin@sgexpoconnect.com" className="text-yellow-600 hover:text-yellow-500 transition-colors">
               admin@sgexpoconnect.com
             </a>
