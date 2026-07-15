@@ -84,7 +84,7 @@ export default function Footer() {
           <div className="w-10 h-px bg-yellow-600 mb-3" />
           <div className="flex flex-col gap-4 text-gray-500 text-sm">
             <p className="leading-relaxed">
-              SG Expo Connect India Pvt Ltd<br />
+              SG ExpoConnect India Pvt Ltd<br />
               Mumbai, India
             </p>
 
@@ -104,7 +104,7 @@ export default function Footer() {
       <div className="border-t border-gray-200/60">
         <div className="max-w-7xl mx-auto px-8 py-5 flex justify-center items-center">
           <p className="text-sm text-gray-500">
-            Copyright © {new Date().getFullYear()} SG Expo Connect India Pvt Ltd. All Rights Reserved.
+            Copyright© {new Date().getFullYear()} SG ExpoConnect India Pvt Ltd. All Rights Reserved.
           </p>
         </div>
       </div>

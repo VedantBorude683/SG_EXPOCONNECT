@@ -7,9 +7,12 @@ import p4 from '../assets/p4.png';
 import p5 from '../assets/p5.jpg';
 import leader1 from '../assets/leader1.jpg';
 import p6 from '../assets/p6.jpg';
-import saadImg from '../assets/Saad.jpg';
-import rahulImg from '../assets/Rahul.jpg';
-import sahilImg from '../assets/sahil.jpg';
+import saadImg from '../assets/Saad1.png';
+import rahulImg from '../assets/rahul1.png';
+import sahilImg from '../assets/Sahil1.png';
+import samyanImg from '../assets/samyan.jpg';
+import ventixGlobalLogo from '../assets/ventix_global2.png';
+import ventixStudiosLogo from '../assets/ventix_studios1.png';
 
 export default function Team() {
   const team = [
@@ -57,16 +60,7 @@ export default function Team() {
     }
   ];
 
-  const newMainTeamMembers = [
-    { name: "New Member 1", role: "Role Placeholder", image: "https://via.placeholder.com/400x500", position: "object-cover", bio: "Placeholder biography for this new member." },
-    { name: "New Member 2", role: "Role Placeholder", image: "https://via.placeholder.com/400x500", position: "object-cover", bio: "Placeholder biography for this new member." },
-    { name: "New Member 3", role: "Role Placeholder", image: "https://via.placeholder.com/400x500", position: "object-cover", bio: "Placeholder biography for this new member." }
-  ];
 
-  const divisionMainTeam = [
-    { name: "Krish", role: "Role Placeholder", image: "https://via.placeholder.com/400x500", position: "object-cover", bio: "Placeholder biography for this division member." },
-    { name: "Samyan", role: "Role Placeholder", image: "https://via.placeholder.com/400x500", position: "object-cover", bio: "Placeholder biography for this division member." }
-  ];
 
   const divisionVentixStudio = [
     { name: "Saad", role: "Designing Graphics / Social Media Manager [PR]", image: saadImg, position: "object-center", bio: "Driving visionary creative strategies and multimedia campaigns." },
@@ -164,20 +158,6 @@ export default function Team() {
             {renderCard(team[3], 3)}
           </motion.div>
 
-          {/* Row 4.5 (New 3 Members) */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mt-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-          >
-            {newMainTeamMembers.map((member, idx) => (
-              <div key={idx} className="transform md:scale-95 opacity-90 hover:opacity-100 transition-all duration-300">
-                {renderCard(member, idx + 10)}
-              </div>
-            ))}
-          </motion.div>
 
           {/* Row 5 (Managers) */}
           <motion.div
@@ -228,9 +208,9 @@ export default function Team() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full max-w-[240px] md:max-w-[300px] flex justify-center md:justify-start"
+              className="w-full max-w-[420px] flex justify-center md:justify-start"
             >
-              <img src="https://via.placeholder.com/300x150?text=Ventix+Global+Logo" alt="Ventix Global Logo" className="w-full h-auto object-contain rounded-xl shadow-sm" />
+              <img src={ventixGlobalLogo} alt="Ventix Global Logo" className="w-full h-auto object-contain mix-blend-multiply" />
             </motion.div>
 
             <motion.div
@@ -244,21 +224,6 @@ export default function Team() {
             </motion.div>
           </div>
 
-          {/* Division Members */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 max-w-4xl mx-auto">
-            {divisionMainTeam.map((member, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="transform md:scale-95 opacity-90 hover:opacity-100 transition-all duration-300"
-              >
-                {renderCard(member, idx + 20)}
-              </motion.div>
-            ))}
-          </div>
         </div>
 
         {/* Division Divider */}
@@ -273,9 +238,9 @@ export default function Team() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="w-full max-w-[240px] md:max-w-[300px] flex justify-center md:justify-start"
+              className="w-full max-w-[420px] flex justify-center md:justify-start"
             >
-              <img src="https://via.placeholder.com/300x150?text=Ventix+Studios+Logo" alt="Ventix Studios Logo" className="w-full h-auto object-contain rounded-xl shadow-sm" />
+              <img src={ventixStudiosLogo} alt="Ventix Studios Logo" className="w-full h-auto object-contain mix-blend-multiply" />
             </motion.div>
 
             <motion.div

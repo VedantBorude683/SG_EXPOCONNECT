@@ -149,7 +149,7 @@ export default function Navigation({ delay = 0 }) {
               className="w-full px-10 py-8 flex justify-between items-end flex-shrink-0"
             >
               <div className="flex flex-col gap-1">
-                <p className="text-lg font-bold text-[#0A1931]">SG Expo Connect</p>
+                <p className="text-lg font-bold text-[#0A1931]">SG ExpoConnect</p>
                 <p className="text-xs text-gray-500">Connecting Business. Connecting People.</p>
                 <p className="text-xs text-gray-400">© {new Date().getFullYear()} All Rights Reserved</p>
               </div>

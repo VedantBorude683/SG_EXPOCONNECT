@@ -37,7 +37,7 @@ const topProjects = [
     name: "Medical Fair India Exhibition",
     category: "Medical Tech",
     description: "A premier knowledge-sharing forum and exhibition bringing together medical tech innovators and industry experts to foster collaboration and showcase breakthrough healthcare solutions.",
-    image: "https://www.messe-duesseldorf.de/cache/pica/1/5/5/9/4/15001654083400/MEDIKABAZAAR.jpg"
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
   },
   {
     name: "Plastvision Arabia Exhibition",

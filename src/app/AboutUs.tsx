@@ -87,7 +87,7 @@ export default function AboutUs() {
             <div className="relative w-full flex items-center justify-center">
               <img
                 src="https://www.fusheng.com/ind_images/Exhibitions/2023/2023ACREX_INDIA%E5%8D%B0%E5%BA%A6%E5%9C%8B%E9%9A%9B%E7%A9%BA%E8%AA%BF%E3%80%81%E5%86%B7%E5%87%8D%E6%9A%A8%E6%A8%93%E5%AE%87%E8%A8%AD%E5%82%99%E5%B1%95/811891.jpg"
-                alt="About SG Expo Connect"
+                alt="About SG ExpoConnect"
                 className="w-full h-[300px] sm:h-[400px] lg:h-[600px] object-cover rounded-3xl lg:rounded-[2rem] shadow-xl"
               />
             </div>
@@ -100,7 +100,7 @@ export default function AboutUs() {
               </h2>
 
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                SG Expo Connect is a modern platform built to simplify and enhance the exhibition experience for exhibitors, visitors, and event organizers. We believe that every expo is more than just an event — it is an opportunity to discover innovations, meet industry leaders, build partnerships, and create new business opportunities.
+                SG ExpoConnect is a modern platform built to simplify and enhance the exhibition experience for exhibitors, visitors, and event organizers. We believe that every expo is more than just an event — it is an opportunity to discover innovations, meet industry leaders, build partnerships, and create new business opportunities.
               </p>
 
               {/* Feature Grid */}

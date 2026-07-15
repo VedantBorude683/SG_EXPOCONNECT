@@ -41,7 +41,7 @@ export default function ProjectsPage() {
       name: "Medical Fair India Exhibition",
       category: "Medical Tech",
       description: "A premier knowledge-sharing forum and exhibition bringing together medical tech innovators and industry experts to foster collaboration and showcase breakthrough healthcare solutions.",
-      image: "https://www.messe-duesseldorf.de/cache/pica/1/5/5/9/4/15001654083400/MEDIKABAZAAR.jpg"
+      image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Plastvision Arabia Exhibition",
@@ -89,7 +89,7 @@ export default function ProjectsPage() {
       name: "WETEX Exhibition Dubai",
       category: "Sustainability",
       description: "Leading the charge in sustainable growth by organizing a massive Middle Eastern trade exhibition focused on water, energy, and environmental technology partnerships.",
-      image: "https://www.utilities-me.com/wp-content/uploads/cloud/2024/09/05/qy602vgw1k80xqapn.jpeg"
+      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Arab Health Exhibition",
@@ -143,7 +143,7 @@ export default function ProjectsPage() {
       name: "RAHSTA Exhibition",
       category: "Road Tech",
       description: "An expertly managed road construction and safety technology exhibition, providing a focused platform for infrastructure innovators to connect and secure lucrative industry partnerships.",
-      image: "https://crystalcraftexpo.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-04-10-at-12.51.56-PM.jpeg"
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=2070&auto=format&fit=crop"
     },
     {
       name: "Construction Technology Exhibition",

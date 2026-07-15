@@ -15,7 +15,7 @@ const galleryImages = [
   {
     url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop",
     title: "World-Class Exhibitions",
-    caption: "SG Expo Connect orchestrates large-scale international trade exhibitions across the globe, bringing industries together under one roof."
+    caption: "SG ExpoConnect orchestrates large-scale international trade exhibitions across the globe, bringing industries together under one roof."
   },
   {
     url: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
@@ -146,7 +146,7 @@ export default function App() {
               </h1>
 
               <p className="text-gray-600 text-base md:text-lg font-light leading-relaxed mb-6 max-w-lg">
-                <strong className="font-semibold text-[#0A1931]">SG Expo Connect</strong> creates powerful exhibitions, conferences, and business networking platforms that bring together industry leaders, innovators, and decision-makers.
+                <strong className="font-semibold text-[#0A1931]">SG ExpoConnect</strong> creates powerful exhibitions, conferences, and business networking platforms that bring together industry leaders, innovators, and decision-makers.
               </p>
 
               <div className="mb-8">
