@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import p2 from '../../assets/p2.jpg';
 import p3 from '../../assets/p3.jpg';
-import p4 from '../../assets/p4.jpg';
+import p4 from '../../assets/p4.png';
 import p5 from '../../assets/p5.jpg';
 import leader1 from '../../assets/leader1.jpg';
 import leader2 from '../../assets/leader2.jpg';
@@ -16,6 +16,7 @@ export default function MeetTheTeam() {
     { name: "Bharati Mera", role: "Exhibition Head", image: p2, position: "object-center" },
     { name: "Nageshwari Tambe", role: "Finance Manager", image: p5, position: "object-center" },
     { name: "Manas Gomes", role: "Office Manager", image: p6, position: "object-[10%_top]" }
+
   ];
 
   const renderCard = (member: any, idx: number) => (
@@ -91,15 +92,34 @@ export default function MeetTheTeam() {
           {renderCard(team[2], 2)}
         </motion.div>
 
-        {/* Row 4 (The Department Heads) */}
+        {/* Row 4 (Exhibition Head) */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl"
+          className="w-full max-w-[320px]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {team.slice(3).map((member, idx) => renderCard(member, idx + 3))}
+          {renderCard(team[3], 3)}
+        </motion.div>
+
+        {/* Row 5 (Managers) */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 w-full max-w-4xl -mt-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {/* Nageshwari Tambe */}
+          <div className="transform md:scale-95 opacity-90 hover:opacity-100 transition-all duration-300">
+            {renderCard(team[4], 4)}
+          </div>
+
+          {/* Manas Gomes */}
+          <div className="transform md:scale-95 opacity-90 hover:opacity-100 transition-all duration-300">
+            {renderCard(team[5], 5)}
+          </div>
         </motion.div>
 
       </div>
