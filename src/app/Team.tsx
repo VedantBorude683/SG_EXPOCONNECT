@@ -7,12 +7,9 @@ import p4 from '../assets/p4.png';
 import p5 from '../assets/p5.jpg';
 import leader1 from '../assets/leader1.jpg';
 import p6 from '../assets/p6.png';
-import saadImg from '../assets/Saad1.png';
-import rahulImg from '../assets/rahul1.png';
-import sahilImg from '../assets/Sahil1.png';
 import samyanImg from '../assets/samyan.jpg';
 import ventixGlobalLogo from '../assets/ventix_global2.png';
-import ventixStudiosLogo from '../assets/ventix_studios1.png';
+
 
 export default function Team() {
   const team = [
@@ -61,12 +58,6 @@ export default function Team() {
   ];
 
 
-
-  const divisionVentixStudio = [
-    { name: "Saad", role: "Designing Graphics / Social Media Manager [PR]", image: saadImg, position: "object-center", bio: "Driving visionary creative strategies and multimedia campaigns." },
-    { name: "Rahul", role: "Photographer / Operation Lead [Head]", image: rahulImg, position: "object-center", bio: "Architecting robust digital platforms and seamless user experiences." },
-    { name: "Khan Sahil", role: "Videographer, Editor and Operation Manager", image: sahilImg, position: "object-center", bio: "Ensuring timely delivery and flawless execution of all studio projects." }
-  ];
 
   const renderCard = (member: any, idx: number) => (
     <div key={idx} className="relative h-[450px] md:h-[500px] w-full rounded-[2rem] overflow-hidden group shadow-[0_8px_40px_rgba(10,25,49,0.12)] text-left">
@@ -216,41 +207,7 @@ export default function Team() {
 
         </div>
 
-        {/* Division Divider */}
-        <div className="w-full max-w-7xl mx-auto mb-16 border-t border-[#0A1931]/10 px-6"></div>
 
-        {/* Division 2: Ventix Studio */}
-        <div className="max-w-7xl mx-auto px-6 mb-24">
-
-          {/* Header Row: Logo */}
-          <div className="flex flex-col items-center justify-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="w-full max-w-[420px] flex justify-center"
-            >
-              <div className="w-full overflow-hidden" style={{ height: '72%' }}>
-                <img src={ventixStudiosLogo} alt="Ventix Studios Logo" className="w-full h-auto object-contain object-top mix-blend-multiply" />
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Division Members */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {divisionVentixStudio.map((member, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-              >
-                {renderCard(member, idx + 30)}
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </section>
 
       <Footer />
